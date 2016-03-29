@@ -7,8 +7,8 @@ var prefixPath="tokensale/";
    
 // define the module
 angular
-.module('crowdsale', [ 'ngMaterial', 'ngAnimate','ngMessages' ])
-.controller('CrowdsaleController', [ '$scope', '$mdBottomSheet', '$mdDialog','$log', '$q', '$http','$timeout','accountService',  CrowdsaleController ])
+.module('tokensale', [ 'ngMaterial', 'ngAnimate','ngMessages' ])
+.controller('TokenSaleController', [ '$scope', '$mdBottomSheet', '$mdDialog','$log', '$q', '$http','$timeout','accountService',  TokenSaleController ])
 .config(function($mdThemingProvider){
     $mdThemingProvider.theme('default')
     .primaryPalette('blue-grey')
@@ -90,7 +90,7 @@ function detectMistLink() {
 
 
 // define main-controller
-function CrowdsaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $http,$timeout,accountService) {
+function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $http,$timeout,accountService) {
 
    // helper for error-handling
    function showError(title,msg,ev) {

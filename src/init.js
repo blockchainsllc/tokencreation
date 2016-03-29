@@ -33,7 +33,7 @@
         'src/scryptsy.min.js',
         'src/aes.js',
         'src/daoutils.js',
-        'src/CrowdsaleController.js',
+        'src/TokenSaleController.js',
         'src/AccountService.js',
         'src/status.js'
     ].forEach(function(path) {
@@ -42,7 +42,7 @@
 
     document.addEventListener("DOMContentLoaded", function(event) { 
         $("#dao_container").load( prefix+"tokensale.html #dao_include" , function(){
-            angular.bootstrap(document, ['crowdsale']);
+            angular.bootstrap(document, ['tokensale']);
         });
         $("#dao_stats").load( prefix+"stats.html #dao_stats_include" , function(){
             $(".dao-stat-token-sold").html(window.daoStats.tokens * window.daoStats.units);

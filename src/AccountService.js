@@ -58,7 +58,7 @@ function getValueWithoutGas(value) {
 }
 
 
-angular.module('crowdsale').service('accountService', ['$q','$http','$interval', function($q,$http,$interval) {
+angular.module('tokensale').service('accountService', ['$q','$http','$interval', function($q,$http,$interval) {
 
    
    // init web3 && accounts
