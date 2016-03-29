@@ -138,7 +138,7 @@
          </form>
 
           <div>
-             Please use the DAO address ( {{daoAddress}} ) and the <a href="src/dao-abi.json" download>JSON interface</a> to add the DAO contract to your Ethereum wallet. This is the only way you can fully participate in the DAO. 
+             Please use the DAO address {{daoAddress}} and the <a href="src/dao-abi.json" download>JSON interface</a> to add the DAO contract to your Ethereum wallet. This is the only way you can fully participate in the DAO. 
           </div>
         </md-content>
       </div>
@@ -158,15 +158,15 @@
             <!-- use the mist-browser -->
             <div ng-show="account.existing=='yes_mist'">
                <ol>
-                  <li>Download the most recent version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>; this video can guide you through the installation process.</li>
+                  <li>Download the most recent version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>; this video can guide you through the installation process (INSERT LINK).</li>
                   <li>Unzip the file where you want install the program.</li>
-                  <li>Start the Ethereum Wallet<br/>When the Ethereum Wallet is opened, it will synchronize the blockchain data, which will likely take several hours.</li>
-                  <li>An account will be automatically created for you. Make a note of the account address.</li>
+                  <li>Open the Ethereum-Wallet application file<br/>Follow the instructions to set up your new Ethereum Account <br/>It will likely take several hours to synchronize the blockchain.</li>
+                  <li>Make a note of your Ethereum account address.</li>
                   <li ng-show="account.currencyType=='ETH'">
                         Load ETH (ether) onto the account
                   </li>
                   <li ng-show="account.currencyType=='ETH'">
-                     Send the amount of ETH you want to convert for DAO tokens to the following DAO contract address:<br/>
+                     Send the amount of ETH you want to use to purchase DAO tokens to the following DAO contract address:<br/>
                      <pre>{{daoAddress}}</pre>
                       <span style="color:red; ">Note that this page will not update and you will not be notified of the transfer. </span><br/>
                       This is expected as you are sending ETH directly to the DAO contract via your wallet. 
@@ -205,7 +205,7 @@
                <!--do it directly -->
                <div ng-show="account.existing=='yes'  ">
                   <p>
-                      Your DAO token will be purchased instantly.  <br/>  Send the amount of ETH you want to convert for DAO tokens to the following DAO contract address: <br/><br/>
+                      Your DAO token will be purchased instantly.  <br/>  Send the amount of ETH you want to use to purchase DAO tokens to the following DAO contract address: <br/><br/>
                         <pre>{{daoAddress}}</pre> <br/>
                           <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/>
                             This is expected as you are sending ETH directly to the DAO contract via your wallet. <br/><br/>
@@ -222,7 +222,7 @@
                   <form name="etherForm" ng-submit="sendEther($event)" >
                      <div ng-show="account.unlocked && account.adr">
                         <div>
-                           <p>How many DAO tokens would you like to purchase?</p>
+                           <p>How much ETH would you like to use to purchase DAO tokens?</p>
                            
                            <div class="row">
                               <md-input-container class="col-md-6">
@@ -243,8 +243,8 @@
 
                         </div>
                        <div style="margin-bottom:10px;margin-left:10px;margin-top:10px;">
-                           <p>Pressing the "Send Transaction" button will sign and broadcast an ETH transaction with your newly created account for the pledged amount. This signed transaction will purchase DAO tokens as soon the balance of your newly created account {{account.adr}} exceeds the pledged amount of ETH. To fully participate in the DAO this account will need hold a small balance of ETH. We recommend at least 0.1 ETH.<br/><br/>
-                           Note that this does not lock in the price of the DAO tokens, and the price of the tokens will be the price at the time the ETH is sent to this newly created account. 
+                           <p>Pressing the "Send Transaction" button will sign and broadcast an ETH transaction with your newly created account for the pledged amount. This signed transaction will purchase DAO tokens as soon the balance of your newly created account {{account.adr}} exceeds the pledged amount of ETH. To fully participate in the DAO this account will need hold a small balance of ETH. We recommend you send at least 0.1 ETH extra.<br/><br/>
+                           Note that this does not lock in the current price of the DAO tokens. The price of the DAO tokens will be the price at the time the ETH is sent to your newly created account. If you send ETH to this account after the sale has ended, you will not receive any DAO Tokens.
                         </div>
                      </div>
                   </form>
@@ -261,7 +261,7 @@
                <form name="btcForm" ng-submit="sendBTC($event,account.btc_amount,'btc_qrcode')" >
                         <div>
                             <div class="row">
-                                <p class="col-md-6">How many DAO tokens would you like to purchase?</p>
+                                <p class="col-md-6">How much BTC would you like to use to purchase DAO tokens?</p>
 
                              </div>
                            
@@ -348,15 +348,15 @@
                
               <p style="font-size: 14px;">
                      Thanks to our partnership with ShapeShift.io, you can purchase DAO tokens with almost any digital currency.<br/>
-                     You will also benefit from higher limits using this tool than using Shapeshift directly.<br/>
+                     You will also benefit from higher limits using this tool than using ShapeShift directly.<br/>
                      Once you click the button below, a ShapeShift window will open, where you will be able to conduct the transaction.<br/><br/>
 
                       <md-button ng-click="openShapeShift()"><img src="https://shapeshift.io/images/shifty/small_light_altcoins.png" class="ss-button"></md-button><br/><br/>
 
                         <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/>
-                        This is expected as Shapeshift will be sending ETH directly to the DAO contract on your behalf. <br/><br/>
+                        This is expected as ShapeShift will be sending ETH directly to the DAO contract on your behalf. <br/><br/>
 
-                         After Shapeshift transfer the funds to the DAO, you will be able to check your <a href="#balance">balance</a> for account {{account.adr}}</a>. <br/>
+                         After ShapeShift transfers the funds to the DAO, you will be able to check your <a href="#balance">balance</a> for account {{account.adr}}</a> . <br/>
                           Voting on proposals will go live at the end of the Token Sale. <br/><br/>
 
                             You can now safely close this page.<br/>
@@ -400,14 +400,14 @@
       </div>
            
 
-      <!-- 4. FIAT register at Bity -->
+      <!-- 3. FIAT register at Bity -->
       <div ng-show="account.currencyType=='FIAT' && account.existing && (account.existing!='no' || account.adr)" class="roundBorder">
         <md-toolbar >
-           <div class="md-toolbar-tools"><h2 class="md-flex">Step 4 : Register on Bity</h2></div>
+           <div class="md-toolbar-tools"><h2 class="md-flex">Step 3 : Register on Bity</h2></div>
         </md-toolbar>
         <md-content class="md-padding content-border" >
            <p>
-              In order to buy DAO tokens using US Dollars, Euros, or Swiss Francs, please continue the purchase at Bity.com. They have partnered with us to build a custom interface for the DAO Token Sale.
+              In order to purchase DAO tokens using US Dollars, Euros, or Swiss Francs, please continue the purchase at Bity.com. They have partnered with us to build a custom interface for the DAO Token Sale.
               
                <p><a href="https://bity.com/"  target="_new"><img src="https://bity.com/assets/img/logo-without-circle.png" width="200"/></a></p>
            </p>
@@ -415,15 +415,15 @@
            <p>
                       
               <ol>
-                <li><a href="https://bity.com/register" target="_new">Proceed to Bity.com/a></li>
+                <li><a href="https://bity.com/register" target="_new">Proceed to Bity.com</a></li>
                 <li>Create a new account</li>
-                <li>Login</li>
+                <li>Confirm your email and Login</li>
                 <li>Enter your phone number and verify your account</li>
-                <li>Register your Ethereum account's address</li>
-                <li>Follow the instructions.</li>
-                <li>Enter the amount you want to spend to buy DAO tokens. To buy more than 250 EUR, USD or CHF you will have to further verify your identity with Bity</li>
+                <li>Register your Ethereum account's address </li>
+                <li>Follow the instructions </li>
+                <li>Enter the amount you want to spend to purchase DAO tokens. To spend more than 250 EUR, USD or CHF you will have to further verify your identity with Bity.</li>
                 <li>Select bank transfer</li>
-                <li>Follow the instructions to complete the payment and be sure to include the reference code</li>
+                <li>Follow the instructions to complete the payment and be sure to include the reference code when creating the bank transfer</li>
               </ol>
               
               
