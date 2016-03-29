@@ -57,7 +57,7 @@ function initBalanceCheck() {
       }
 
       function sendRequest (method,params,cb) {
-         $.post("tokensale/server/web3.php", JSON.stringify({
+         $.post(window.daoStats.server + "web3.php", JSON.stringify({
             jsonrpc:"2.0",
             method:method,
             params: params,

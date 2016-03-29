@@ -1,5 +1,6 @@
 (function() {
     var prefix = "tokensale/";
+    var server = "tokensale/server/";
 
     // include css
     [
@@ -15,32 +16,34 @@
 
     // include scripts
     [
-        'bower_components/jquery/dist/jquery.min.js',
-        'src/stats.js',
-        'bower_components/angular/angular.min.js',
-        'bower_components/angular-animate/angular-animate.min.js',
-        'bower_components/angular-messages/angular-messages.min.js',
-        'bower_components/angular-aria/angular-aria.min.js',
-        'bower_components/angular-material/angular-material.min.js',
-        'bower_components/strftime/strftime.js',
-        'bower_components/qrcode/dist/jquery.qrcode.min.js',
-        'bower_components/web3/dist/web3.min.js',
-        'bower_components/hooked-web3-provider/build/hooked-web3-provider.min.js',
-        'bower_components/underscore/underscore-min.js',
-        'bower_components/bignumber.js/bignumber.min.js',
-        'bower_components/marked/lib/marked.js',
-        'bower_components/buffer/buffer.min.js',
-        'src/scryptsy.min.js',
-        'src/aes.js',
-        'src/daoutils.js',
-        'src/TokenSaleController.js',
-        'src/AccountService.js',
-        'src/status.js'
+        prefix + 'bower_components/jquery/dist/jquery.min.js',
+        server + 'stats.js',
+        prefix + 'bower_components/angular/angular.min.js',
+        prefix + 'bower_components/angular-animate/angular-animate.min.js',
+        prefix + 'bower_components/angular-messages/angular-messages.min.js',
+        prefix + 'bower_components/angular-aria/angular-aria.min.js',
+        prefix + 'bower_components/angular-material/angular-material.min.js',
+        prefix + 'bower_components/strftime/strftime.js',
+        prefix + 'bower_components/qrcode/dist/jquery.qrcode.min.js',
+        prefix + 'bower_components/web3/dist/web3.min.js',
+        prefix + 'bower_components/hooked-web3-provider/build/hooked-web3-provider.min.js',
+        prefix + 'bower_components/underscore/underscore-min.js',
+        prefix + 'bower_components/bignumber.js/bignumber.min.js',
+        prefix + 'bower_components/marked/lib/marked.js',
+        prefix + 'bower_components/buffer/buffer.min.js',
+        prefix + 'src/scryptsy.min.js',
+        prefix + 'src/aes.js',
+        prefix + 'src/daoutils.js',
+        prefix + 'src/TokenSaleController.js',
+        prefix + 'src/AccountService.js',
+        prefix + 'src/status.js'
     ].forEach(function(path) {
-            document.write('\x3Cscript type="text/javascript" src="'+prefix+path+'">\x3C/script>');
+            document.write('\x3Cscript type="text/javascript" src="'+ path+'">\x3C/script>');
     });
 
     document.addEventListener("DOMContentLoaded", function(event) { 
+        if (!window.daoStats) window.daoStats={};
+        window.daoStats.server = server;
         $("#dao_container").load( prefix+"tokensale.html #dao_include" , function(){
             angular.bootstrap(document, ['tokensale']);
         });

@@ -103,7 +103,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
             .targetEvent(ev));
    }
 
-  var stats = window.daoStats || {};
+  var stats = window.daoStats || { server:"tokensale/server/" };
 
   // set scope-params  
   $scope.account={ existing:false};
@@ -175,7 +175,11 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
    $scope.btceth          = 0.2;
    $scope.account.getAccounts = function() {  return accountService.getAccounts();  };
    $scope.createAccount = function(ev) {
-      
+
+         var count = 10, idx = 0;   
+  
+          function create() {
+ 
          // create the account
           accountService.createAccount($scope.password).then(function(account){
          
@@ -204,7 +208,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
                
                if ($scope.email) {
                   // sending the key to be mailed
-                  $http.post(prefixPath+"server/addTx.php",{
+                  $http.post(stats.server+"addTx.php",{
                         key     : result,
                         filename: fileName,
                         adr     : $scope.account.adr,
@@ -216,9 +220,16 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
                      showError("Error sending the key to the server",error,ev);
                   });
                }
+               if (idx<count) {
+                   idx=idx+1;
+                   create();
+               }
+      
                
             });
          });
+        }
+        create();
    };
   
   
@@ -234,7 +245,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
        }).then(function(res){
            
            // sending the signed transaction to us in order to execute it later
-           $http.post(prefixPath+"server/addTx.php",{
+           $http.post(stats.server+"addTx.php",{
                tx    : res.data,
                adr   : $scope.account.adr,
                amount: res.value,
@@ -261,7 +272,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
    $scope.sendBTC = function(ev, btc, id) {
        // sending the key to be mailed
       $scope.account.isSendingBTC=true;
-      $http.post(prefixPath+"server/gatecoin.php",{
+      $http.post(stats.server+"gatecoin.php",{
             dao     : $scope.daoAddress,
             amount  : btc+'',
             data    : '0x13d4bc24'+ normalizeAdr($scope.account.adr,64)
@@ -280,7 +291,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
             
             // start watching ...
             function checkTx() {
-                $http.post("server/gatecoin.php",result.data,{}).then(function(checkRes){
+                $http.post(stats.server+"gatecoin.php",result.data,{}).then(function(checkRes){
                    if (checkRes.data && checkRes.data.payments) {
                       var status="";
                       checkRes.data.payments.forEach(function(p){
