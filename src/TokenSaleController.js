@@ -175,10 +175,6 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
    $scope.btceth          = 0.2;
    $scope.account.getAccounts = function() {  return accountService.getAccounts();  };
    $scope.createAccount = function(ev) {
-
-         var count = 10, idx = 0;   
-  
-          function create() {
  
          // create the account
           accountService.createAccount($scope.password).then(function(account){
@@ -220,16 +216,11 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
                      showError("Error sending the key to the server",error,ev);
                   });
                }
-               if (idx<count) {
-                   idx=idx+1;
-                   create();
-               }
+              
       
                
             });
          });
-        }
-        create();
    };
   
   
