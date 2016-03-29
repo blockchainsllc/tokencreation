@@ -52,22 +52,29 @@ To set it up, you need simply need to follow these steps:
     ```    
    
 * after putting these file to the server, you need to go into the directory tokensale and call
-   
+
+    ```shell   
     bower update
+    ```
     
 * and in the directory tokensale/server/tx
 
+    ```shell
     npm install
+    ```
     
 * now active a cronjob, which is used to handle all incoming requests and also updateing the statistics.
 
+    ```shell
     crontab -e
+    ```
     
    The lines you should add ther should look like this:
    
+   ```shell
     0 * * * * /usr/bin/nodejs {PATHTOSITE}/tokensale/server/tx/updateStats.js /var/log/updatestats 2>&1
     */5 * * * * /usr/bin/node {PATHTOSITE}/tokensale/server/tx/import.js >> /var/log/dao_tx 2>&1
-
+    ```
    This will let the first cronjob update the statistics every hour and check for incoming transaction every 5 min.
    
 Before you test the site you may update the statistics even manually, if you don't want to wait for the cronjob to do it:
@@ -78,4 +85,4 @@ Go to tokensale/server/tx and run
  
 
 
-Not it's ready to go!
+Now it's ready to go!
