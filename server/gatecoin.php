@@ -7,7 +7,6 @@ $data   = json_decode($json);
 
 function execRequest($request_type, $path, $curl_post_data) {
    
-   // my
    $secretKey    = $config->gatecoin->secretKey;
    $publicKey    = $config->gatecoin->publicKey;
 
