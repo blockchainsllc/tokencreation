@@ -7,5 +7,5 @@ var code = 'window.daoStats='+JSON.stringify(stats)+"\n" +
            '$(".dao-stat-token-price").html(window.daoStats.price+" ETH");\n'+
            '$(".dao-stat-total-eth").html(window.daoStats.balance+" ETH");\n';
 
-fs.writeFile(process.argv[2] ||  __dirname+"/../../src/stats.js",code);
+fs.writeFile(process.argv[2] ||  __dirname+"/stats.js",code);
 

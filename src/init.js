@@ -17,7 +17,7 @@
     // include scripts
     [
         prefix + 'bower_components/jquery/dist/jquery.min.js',
-        server + 'stats.js',
+        server + 'tx/stats.js',
         prefix + 'bower_components/angular/angular.min.js',
         prefix + 'bower_components/angular-animate/angular-animate.min.js',
         prefix + 'bower_components/angular-messages/angular-messages.min.js',
