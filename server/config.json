@@ -1,9 +1,9 @@
 {
-   "client"  : "http://37.120.164.112:8545",
+   "client"  : "http://localhost:8545",
    "dao"     : "0xAb872F3aE424B209Cb9C060EE80dF04d99D47633",
    "data"    : "/data/dao",
    "mailer"  : {
-       "from"    : "DAOHub <dao@dahub.org>",
+       "from"    : "DAOHub <dao@daohub.org>",
        "sendKey" : {
             "subject" : "Your new DAO-Account",
             "text"    : "Dear User\n\nYou just created a new Account in order to take part on the DAO.\nYour public address is 0x$address$\n\nYou may put this key into ~/.ethereum/keystore -folder in order to use it\n\nYour DAO-Team"
