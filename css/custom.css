@@ -1,0 +1,80 @@
+
+.md-toolbar-tools h2 {
+    color:white
+}
+
+/* crowdsale-css */
+
+md-whiteframe {
+  background: #fff;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-left: 10px; 
+  padding-right: 10px; 
+}
+
+#crowdsaleApp md-content {
+  background-color: transparent !important; 
+}
+  
+#crowdsaleApp md-content md-tabs {
+    background: #f6f6f6;
+    border: 1px solid #e1e1e1; 
+}
+
+#crowdsaleApp md-content md-tabs md-tabs-wrapper {
+      background: white; 
+}
+
+#crowdsaleApp md-content h1:first-child {
+    margin-top: 0; 
+}
+
+md-tab-item.md-active {
+   color: black !important;
+}
+md-tab-item {
+   color: black !important;
+}
+
+.content-border {
+   border-bottom: 1px solid #aaa;
+   border-left: 1px solid #aaa;
+   border-right: 1px solid #aaa;
+   margin-bottom: 20px;
+   
+}
+
+
+/* every toolbar need white text */
+md-toolbar h2 {
+    color: #ffffff;
+}
+
+/* every step that is done will add this class */
+md-toolbar.step-done {
+   background-color: green
+}
+
+md-toolbar.checkBalance {
+   background-color: #01a2a6
+}
+
+.roundBorder md-toolbar {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;   
+}
+
+.roundBorder md-content {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;   
+}
+
+
+ol{ margin-left: 0; padding-left: 30px; }
+
+ol li { padding-left: 10px;  font-size: 16px;    line-height: 34px;}
+
+
+
+

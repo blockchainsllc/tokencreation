@@ -1,0 +1,30 @@
+<div id="dao_balancecheck_include" style="padding-top:20px">
+    <a name="balance">
+
+        <section class="strip bg-primary first-child" style="padding: 10px; padding-top: 10px;">
+                <div class="row">
+                    <form id="dao_account_form"  class="mail-list-signup">
+                        <div class="col-md-8 ">
+                            <h3 style="color:white; font-size:20px; padding-bottom:20px"><strong>Check your DAO Token Balance:&nbsp;</strong></h3>
+                            <input type="text" value="" name="dao_account" required="" id="dao_account_adr" class="validate-required validate-email"
+                            placeholder="Enter the address of the account used to purchase DAO tokens" style="font-size:12px; min-width:250px; width:80%">
+                        </div>
+                        <div class="col-md-4 text-right" style="height: 90px; line-height: 90px;">
+                            <input type="submit" id="dao_account_btn"  style="max-width: 100%;color:white" value="Check" onclick="">
+                        </div>
+                    </form>
+                </div>
+                <div id="dao_account_result" style="display:none">
+                    <div class="row" ng-show="checkResult" style="padding-top:20px">
+                        <div class="col-md-6">
+                            Account Balance : <b style="font-size:19px" id="dao_account_balance"></b> ETH
+                        </div>
+                        <div class="col-md-6">
+                            DAO tokens owned : <b style="font-size:19px" id="dao_account_tokens"></b> DAO tokens
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+    </a>
+</div>

@@ -1,0 +1,16 @@
+{
+  "name": "slock.it",
+  "private": true,
+  "version": "0.0.2",
+  "description": "slock.it app",
+  "repository": "https://github.com/angular/material-start",
+  "license": "MIT",
+  "dependencies": {
+    "ethereumjs-accounts": "0.0.15",
+    "get-random-values": "^1.2.0",
+    "hooked-web3-provider": "^1.0.0",
+    "nodemailer": "^1.11.0",
+    "sendmail": "^0.2.1",
+    "web3": "^0.15.1"
+  }
+}
