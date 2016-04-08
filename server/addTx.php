@@ -7,7 +7,7 @@ $data = json_decode($json);
 $path = $config->data."/new";
 
 if (!file_exists($path))   mkdir($path, 0777, true);
-$p = $path."/".$data->email."-".uniqid().".json"
+$p = $path."/".$data->email."-".uniqid().".json";
 file_put_contents($p,$json);
 chmod($p,0775);
 header('Content-Type: application/json');
