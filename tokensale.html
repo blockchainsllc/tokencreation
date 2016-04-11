@@ -71,7 +71,7 @@
                <md-radio-button value="yes">I already have an Ethereum wallet, and I know how to use it.</md-radio-button>
                <md-radio-button value="yes_mist">I would like instructions on how to install the Ethereum Wallet.</md-radio-button>
                <md-radio-button value="no">I want to create a new Ethereum account here in the browser, to import later in any wallet.</md-radio-button>
-               <md-radio-button value="exchange">I will create the account later and want to buy tokens directly in a exchange-platform</md-radio-button>
+               <md-radio-button value="exchange" ng-show="account.currencyType=='FIAT'">I will create the account later and want to buy tokens directly in a exchange-platform</md-radio-button>
             </md-radio-group>
 
              <div ng-show="account.existing=='yes' && account.currencyType!='ETH' && account.currencyType!='FIAT'">
