@@ -106,7 +106,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
   var stats = window.daoStats || { server:"tokensale/server/" };
 
   // set scope-params  
-  $scope.account={ existing:false};
+  $scope.account={ existing:false, useExchange:'yes'};
   
   // TC-Handling
   $scope.acceptedTC = false;
@@ -223,6 +223,11 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
          });
    };
   
+   $scope.getDataField = function() {
+      return isValidAddress($scope.account.adr)
+        ? ('0x13d4bc24'+ normalizeAdr($scope.account.adr,64))
+        :'';
+   }
   
    // sends some ether in a Transaction
    $scope.sendEther = function(ev, amount, cb) {
