@@ -39,15 +39,9 @@
            <form ng-cloak>
               <md-radio-group ng-model="account.currencyType" >
                  <md-radio-button value="ETH">ETH (Direct or as a Result of Exchange like Kraken)</md-radio-button>
-                 <div ng-show="account.currencyType=='ETH'" style='padding-left:40px'>              
-                     <md-radio-group ng-model="account.useExchange" >
-                        <md-radio-button value="yes">I want to transfer the ether from a Exchange-Platform supporting the Transaction with additional data, like Kraken.com</md-radio-button>
-                        <md-radio-button value="no">I will send the Ether directly from the wallet, I want to register</md-radio-button>
-                     </md-radio-group>
-                 </div>
                  <md-radio-button value="BTC">BTC (using Gatecoin)</md-radio-button>
                  <md-radio-button value="COINS">BTC or other Digital Currencies (using ShapeShift)</md-radio-button>
-                 <md-radio-button value="FIAT">BTC or even EUR/USD : Buy Tokens directly on Exchanges </md-radio-button>
+                 <md-radio-button value="FIAT">BTC or EUR/USD/.. (directly on Exchanges like BITY,...) </md-radio-button>
               </md-radio-group>
 
            </form>
@@ -164,9 +158,24 @@
         </md-toolbar>
         <md-content class="md-padding content-border" >
 
+            <!-- Pay in ETH -->
+           <div ng-show="account.currencyType=='ETH'">
+                  <p>How do you want to buy your tokens?</p> 
+
+                  <div style="padding-bottom:20px">
+                      <form>
+                        <md-radio-group ng-model="account.useExchange" >
+                           <md-radio-button value="yes">I want to transfer the ether from a Exchange-Platform supporting the Transaction with additional data, like Kraken.com</md-radio-button>
+                           <md-radio-button value="no">I will send the Ether directly from the wallet, I want to register</md-radio-button>
+                        </md-radio-group>
+                      </form>
+                  </div>
+            </div>
+
 
             <!-- use the mist-browser -->
             <div ng-show="account.existing=='yes_mist'">
+               <p>Setup your Wallet with these Steps:</p>
                <ol>
                   <li>Download the most recent version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>;  and if you want help, <a href="https://youtu.be/Y3JfLgjqNU4" target="_blank">this video can guide you through the installation process.</a>    </li>
                   <li>Unzip the file where you want install the program.</li>
@@ -247,8 +256,6 @@
 
             <!-- Pay in ETH -->
            <div ng-show="account.currencyType=='ETH'"> 
-
-
 
                <!--do it directly -->
                <div ng-show="account.existing=='yes'  ">
