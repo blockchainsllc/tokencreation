@@ -39,15 +39,15 @@
            <form ng-cloak>
               <md-radio-group ng-model="account.currencyType" >
                  <md-radio-button value="ETH">ETH (Direct or as a Result of Exchange like Kraken)</md-radio-button>
-              <div ng-show="account.currencyType=='ETH'" style='padding-left:40px'>              
+                 <div ng-show="account.currencyType=='ETH'" style='padding-left:40px'>              
                      <md-radio-group ng-model="account.useExchange" >
                         <md-radio-button value="yes">I want to transfer the ether from a Exchange-Platform supporting the Transaction with additional data, like Kraken.com</md-radio-button>
                         <md-radio-button value="no">I will send the Ether directly from the wallet, I want to register</md-radio-button>
                      </md-radio-group>
-              </div>
+                 </div>
                  <md-radio-button value="BTC">BTC (using Gatecoin)</md-radio-button>
                  <md-radio-button value="COINS">BTC or other Digital Currencies (using ShapeShift)</md-radio-button>
-                 <md-radio-button value="FIAT">BTC/USD/EUR/CHF (Bity)</md-radio-button>
+                 <md-radio-button value="FIAT">BTC or even EUR/USD : Buy Tokens directly on Exchanges </md-radio-button>
               </md-radio-group>
 
            </form>
@@ -71,6 +71,7 @@
                <md-radio-button value="yes">I already have an Ethereum wallet, and I know how to use it.</md-radio-button>
                <md-radio-button value="yes_mist">I would like instructions on how to install the Ethereum Wallet.</md-radio-button>
                <md-radio-button value="no">I want to create a new Ethereum account here in the browser, to import later in any wallet.</md-radio-button>
+               <md-radio-button value="exchange">I will create the account later and want to buy tokens directly in a exchange-platform</md-radio-button>
             </md-radio-group>
 
              <div ng-show="account.existing=='yes' && account.currencyType!='ETH' && account.currencyType!='FIAT'">
@@ -495,31 +496,54 @@
       <!-- 3. FIAT register at Bity -->
       <div ng-show="account.currencyType=='FIAT' && account.existing && (account.existing!='no' || account.adr)" class="roundBorder">
         <md-toolbar >
-           <div class="md-toolbar-tools"><h2 class="md-flex">Step 3 : Register on Bity</h2></div>
+           <div class="md-toolbar-tools" ng-show="account.existing!='exchange'"><h2 class="md-flex">Step 3 : Register on Bity</h2></div>
+           <div class="md-toolbar-tools" ng-show="account.existing=='exchange'"><h2 class="md-flex">Step 3 : Buy Tokens</h2></div>
         </md-toolbar>
         <md-content class="md-padding content-border" >
-           <p>
-              In order to purchase DAO tokens using US Dollars, Euros, or Swiss Francs, please continue the purchase at Bity.com. They have partnered with us to build a custom interface for the DAO Token Sale.
-              
-               <p><a href="https://bity.com/"  target="_new"><img src="https://bity.com/assets/img/logo-without-circle.png" width="200"/></a></p>
-           </p>
            
-           <p>
+           <div ng-show="account.existing=='exchange'">
+              <p>
+                 There are different Exchanges implemented Code in order buy and trade Tokens for the Generic DAO-Framework. You can use 
+              </p>
+              <p>
+                 <ol>
+                    <li><a href="https://gatecoin.com/" target="_new">Bittrex</a><br/>
+                        
                       
-              <ol>
-                <li><a href="https://bity.com/register" target="_new">Proceed to Bity.com</a></li>
-                <li>Create a new account</li>
-                <li>Confirm your email and Login</li>
-                <li>Enter your phone number and verify your account</li>
-                <li>Register your Ethereum account's address </li>
-                <li>Follow the instructions </li>
-                <li>Enter the amount you want to spend to purchase DAO tokens. To spend more than 250 EUR, USD or CHF you will have to further verify your identity with Bity.</li>
-                <li>Select bank transfer</li>
-                <li>Follow the instructions to complete the payment and be sure to include the reference code when creating the bank transfer</li>
-              </ol>
+                    </li>
+                    <li><a href="https://gatecoin.com/" target="_new">Gatecoin</a><br/>
+                        On Gatecoin you may register as a user and then be able to buy tokens there. In order to use them for voting you may transafer the ownership to an account you can control.
+                    
+                    </li>
+                 </ol>
+              </p>
               
-              
-           </p>
+           </div>
+           <div ng-show="account.existing!='exchange'">
+               
+               <p>
+                  In order to purchase DAO tokens using US Dollars, Euros, or Swiss Francs, please continue the purchase at Bity.com. They have partnered with us to build a custom interface for the DAO Token Sale.
+                  
+                     <p><a href="https://bity.com/"  target="_new"><img src="https://bity.com/assets/img/logo-without-circle.png" width="200"/></a></p>
+               </p>
+               
+               <p>
+                           
+                  <ol>
+                     <li><a href="https://bity.com/register" target="_new">Proceed to Bity.com</a></li>
+                     <li>Create a new account</li>
+                     <li>Confirm your email and Login</li>
+                     <li>Enter your phone number and verify your account</li>
+                     <li>Register your Ethereum account's address </li>
+                     <li>Follow the instructions </li>
+                     <li>Enter the amount you want to spend to purchase DAO tokens. To spend more than 250 EUR, USD or CHF you will have to further verify your identity with Bity.</li>
+                     <li>Select bank transfer</li>
+                     <li>Follow the instructions to complete the payment and be sure to include the reference code when creating the bank transfer</li>
+                  </ol>
+                  
+                  
+               </p>
+           </div>
         </md-content>
       </div>
                     
