@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-    <title>Slock.it DAO Token Sale</title>
+    <title>DAO Creation Guide</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
@@ -20,7 +20,7 @@
          <div id="msgOutput"/>
         
         <div>
-            <md-button class="md-raised md-primary" ng-click="acceptTC($event)" >Purchase DAO Tokens</md-button>
+            <md-button class="md-raised md-primary" ng-click="acceptTC($event)" >Create DAO Tokens</md-button>
         </div>
         
         
@@ -34,14 +34,14 @@
         </md-toolbar>
         <md-content class="md-padding content-border" >
            <p>
-              Select the currency you are using to purchase DAO tokens. The DAO lives on the Ethereum blockchain, for this reason it can only directly accept ETH, any other currency will be converted to ETH by one of our partners before being sent on your behalf to the DAO.
+              Select the currency you are using to Create DAO tokens. The DAO lives on the Ethereum blockchain, for this reason it can only directly accept ETH, any other currency will be converted to ETH by one of the partners before being sent on your behalf to the DAO.
            </p>
            <form ng-cloak>
               <md-radio-group ng-model="account.currencyType" >
-                 <md-radio-button value="ETH">ETH (Direct or as a Result of Exchange like Kraken)</md-radio-button>
-                 <md-radio-button value="BTC">BTC (using Gatecoin)</md-radio-button>
-                 <md-radio-button value="COINS">BTC or other Digital Currencies (using ShapeShift)</md-radio-button>
-                 <md-radio-button value="FIAT">BTC or EUR/USD/.. (directly on Exchanges like BITY,...) </md-radio-button>
+                 <md-radio-button value="ETH">ETH (Direct)</md-radio-button>
+                 <md-radio-button value="BTC">BTC (Gatecoin)</md-radio-button>
+                 <md-radio-button value="COINS">BTC or other Digital Currencies (ShapeShift)</md-radio-button>
+                 <md-radio-button value="FIAT">BTC or Fiat (Bity, Bittrex & Gatecoin) </md-radio-button>
               </md-radio-group>
 
            </form>
@@ -58,14 +58,14 @@
         <md-content class="md-padding content-border" >
            
          <p>
-            In order to purchase and own DAO tokens, you need an Ethereum account and to fully participate in the DAO this account will need hold a small balance of ETH. We recommend at least 0.1 ETH. 
+            In order to Create DAO tokens, you need an Ethereum account and to fully participate in the DAO this account will need hold a small balance of ETH. We recommend at least 0.1 ETH. 
          </p>
          <form name="etheraccount" ng-submit="createAccount()" >
             <md-radio-group ng-model="account.existing" >
                <md-radio-button value="yes">I already have an Ethereum wallet, and I know how to use it.</md-radio-button>
                <md-radio-button value="yes_mist">I would like instructions on how to install the Ethereum Wallet.</md-radio-button>
                <md-radio-button value="no">I want to create a new Ethereum account here in the browser, to import later in any wallet.</md-radio-button>
-               <md-radio-button value="exchange" ng-show="account.currencyType=='FIAT'">I will create the account later and want to buy tokens directly in a exchange-platform</md-radio-button>
+               <md-radio-button value="exchange" ng-show="account.currencyType=='FIAT'">I will create my Ethereum account later so I can vote and control the private keys of my DAO tokens, for now I would like to store them on an exchange.</md-radio-button>
             </md-radio-group>
 
              <div ng-show="account.existing=='yes' && account.currencyType!='ETH' && account.currencyType!='FIAT'">
@@ -148,11 +148,11 @@
       </div>
       
       
-      <!-- 3. Buy DAO Tokens -->
+      <!-- 3. Create DAO Tokens -->
       <div ng-show="showBuy()" class="roundBorder">
         <md-toolbar ng-class="(account.investDone || account.success)?'step-done':''">
            <div class="md-toolbar-tools">
-              <h2 class="md-flex" ng-show="account.currencyType!='FIAT'">Step 3 : Buy DAO Tokens</h2>
+              <h2 class="md-flex" ng-show="account.currencyType!='FIAT'">Step 3 : Create DAO Tokens</h2>
               <h2 class="md-flex" ng-show="account.currencyType=='FIAT'">Step 3 : Setup your Wallet</h2>
            </div>
         </md-toolbar>
@@ -160,13 +160,13 @@
 
             <!-- Pay in ETH -->
            <div ng-show="account.currencyType=='ETH'">
-                  <p>How do you want to buy your tokens?</p> 
+                  <p>How do you want to Create your tokens?</p> 
 
                   <div style="padding-bottom:20px">
                       <form>
                         <md-radio-group ng-model="account.useExchange" >
                            <md-radio-button value="yes">I want to transfer the ether from a Exchange-Platform supporting the Transaction with additional data, like Kraken.com</md-radio-button>
-                           <md-radio-button value="no">I will send the Ether directly from the wallet, I want to register</md-radio-button>
+                           <md-radio-button value="no">I will send the ETH directly from the wallet, I want to register</md-radio-button>
                         </md-radio-group>
                       </form>
                   </div>
@@ -185,7 +185,7 @@
                         Back up your Ethereum Account and load ETH onto the account. <a href="https://www.youtube.com/watch?v=CZ8ZCtbxD0M" target="_blank">this video</a> can guide you through the that process.  
                   </li>
                   <li ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
-                     Send the amount of ETH you want to use to purchase DAO tokens to the following DAO contract address:<br/>
+                     Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address:<br/>
                      <pre>{{daoAddress}}</pre>
                       <span style="color:red; ">Note that this page will not update and you will not be notified of the transfer. </span><br/>
                       This is expected as you are sending ETH directly to the DAO contract via your wallet. 
@@ -215,7 +215,7 @@
                         
                      </div>
                      <div ng-show="getDataField()!=''">
-                        Your DAO token will be purchased instantly.  <br/>  Send the amount of ETH you want to use to purchase DAO tokens to the following DAO contract address: <br/><br/>
+                        Your DAO token will be Created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                         <pre>{{daoAddress}}</pre> <br/><br/>
                         
                         The data you need to add is <br/>
@@ -261,7 +261,7 @@
                <div ng-show="account.existing=='yes'  ">
                   <p>
                      <div ng-show="account.useExchange=='no'">
-                          Your DAO token will be purchased instantly.  <br/>  Send the amount of ETH you want to use to purchase DAO tokens to the following DAO contract address: <br/><br/>
+                          Your DAO token will be Created instantly.  <br/>  Send the amount of ETH you want to use to purchase DAO tokens to the following DAO contract address: <br/><br/>
                           <pre>{{daoAddress}}</pre> <br/>
                           <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/>
                             This is expected as you are sending ETH directly to the DAO contract via your wallet. <br/><br/>
@@ -283,7 +283,7 @@
                      <form name="etherForm" ng-submit="sendEther($event)" >
                         <div ng-show="account.unlocked && account.adr">
                            <div>
-                              <p>How much ETH would you like to use to purchase DAO tokens?</p>
+                              <p>How much ETH would you like to use to Create DAO tokens?</p>
                               
                               <div class="row">
                                  <md-input-container class="col-md-6">
@@ -304,7 +304,7 @@
 
                            </div>
                         <div style="margin-bottom:10px;margin-left:10px;margin-top:10px;">
-                              <p>Pressing the "Send Transaction" button will sign and broadcast an ETH transaction with your newly created account for the pledged amount. This signed transaction will purchase DAO tokens as soon the balance of your newly created account {{account.adr}} exceeds the pledged amount of ETH. To fully participate in the DAO this account will need hold a small balance of ETH. We recommend you send at least 0.1 ETH extra.<br/><br/>
+                              <p>Pressing the "Send Transaction" button will sign and broadcast an ETH transaction with your newly created account for the pledged amount. This signed transaction will Create DAO tokens as soon the balance of your newly created account {{account.adr}} exceeds the pledged amount of ETH. To fully participate in the DAO this account will need hold a small balance of ETH. We recommend you send at least 0.1 ETH extra.<br/><br/>
                               Note that this does not lock in the current price of the DAO tokens. The price of the DAO tokens will be the price at the time the ETH is sent to your newly created account. If you send ETH to this account after the sale has ended, you will not receive any DAO Tokens.
                            </div>
                         </div>
@@ -335,7 +335,7 @@
                      
                   </div>
                   <div ng-show="getDataField()!=''">
-                     Your DAO token will be purchased instantly.  <br/>  Send the amount of ETH you want to use to purchase DAO tokens to the following DAO contract address: <br/><br/>
+                     Your DAO token will be Created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                      <pre>{{daoAddress}}</pre> <br/><br/>
                      
                      The data you need to add is <br/>
@@ -361,14 +361,14 @@
                <form name="btcForm" ng-submit="sendBTC($event,account.btc_amount,'btc_qrcode')" >
                         <div>
                             <div class="row">
-                                <p class="col-md-6">How much BTC would you like to use to purchase DAO tokens?</p>
+                                <p class="col-md-6">How much BTC would you like to use to Create DAO tokens?</p>
 
                              </div>
                            
                            
                            <div class="row">
                               <md-input-container class="col-md-4">
-                                 <label>The amount of BTC you would like to spend on DAO tokens</label>
+                                 <label>The amount of BTC you would like to use to Create on DAO tokens</label>
                                  <input required type="number" step="any" min="0" max="1000000" name="btc_amount" id="account_btc_amount" ng-model="account.btc_amount" />
                                  <div ng-messages="btcForm.btc_amount.$error" role="alert" multiple  >
                                     <div ng-message="required"> Please enter an amount of BTC. </div>
@@ -447,7 +447,7 @@
            <div ng-show="account.currencyType=='COINS' && account.adr">
                
               <p style="font-size: 14px;">
-                     Thanks to our partnership with ShapeShift.io, you can purchase DAO tokens with almost any digital currency.<br/>
+                     Thanks to the partnership with ShapeShift.io, you can Create DAO tokens with almost any digital currency.<br/>
                      You will also benefit from higher limits using this tool than using ShapeShift directly.<br/>
                      Once you click the button below, a ShapeShift window will open, where you will be able to conduct the transaction.<br/><br/>
 
@@ -504,13 +504,13 @@
       <div ng-show="account.currencyType=='FIAT' && account.existing && (account.existing!='no' || account.adr)" class="roundBorder">
         <md-toolbar >
            <div class="md-toolbar-tools" ng-show="account.existing!='exchange'"><h2 class="md-flex">Step 3 : Register on Bity</h2></div>
-           <div class="md-toolbar-tools" ng-show="account.existing=='exchange'"><h2 class="md-flex">Step 3 : Buy Tokens</h2></div>
+           <div class="md-toolbar-tools" ng-show="account.existing=='exchange'"><h2 class="md-flex">Step 3 : Create Tokens</h2></div>
         </md-toolbar>
         <md-content class="md-padding content-border" >
            
            <div ng-show="account.existing=='exchange'">
               <p>
-                 There are different Exchanges implemented Code in order buy and trade Tokens for the Generic DAO-Framework. You can use 
+                 There are multiple exchanges implemented Code in order Create and trade Tokens for the Generic DAO-Framework. You can use 
               </p>
               <p>
                  <ol>
@@ -519,7 +519,7 @@
                       
                     </li>
                     <li><a href="https://gatecoin.com/" target="_new">Gatecoin</a><br/>
-                        On Gatecoin you may register as a user and then be able to buy tokens there. In order to use them for voting you may transafer the ownership to an account you can control.
+                        On Gatecoin you may register as a user and then be able to Create DAO tokens there. In order to use them for voting you may transafer the ownership to an account you can control.
                     
                     </li>
                  </ol>
@@ -529,7 +529,7 @@
            <div ng-show="account.existing!='exchange'">
                
                <p>
-                  In order to purchase DAO tokens using US Dollars, Euros, or Swiss Francs, please continue the purchase at Bity.com. They have partnered with us to build a custom interface for the DAO Token Sale.
+                  In order to obtian DAO tokens using US Dollars, Euros, or Swiss Francs, please continue at Bity.com. They have integrated the generic DAO framework and have built a custom interface for the Creation of new DAOs.
                   
                      <p><a href="https://bity.com/"  target="_new"><img src="https://bity.com/assets/img/logo-without-circle.png" width="200"/></a></p>
                </p>
@@ -543,7 +543,7 @@
                      <li>Enter your phone number and verify your account</li>
                      <li>Register your Ethereum account's address </li>
                      <li>Follow the instructions </li>
-                     <li>Enter the amount you want to spend to purchase DAO tokens. To spend more than 250 EUR, USD or CHF you will have to further verify your identity with Bity.</li>
+                     <li>Enter the amount you want to use to Create DAO tokens. To spend more than 250 EUR, USD or CHF you will have to further verify your identity with Bity.</li>
                      <li>Select bank transfer</li>
                      <li>Follow the instructions to complete the payment and be sure to include the reference code when creating the bank transfer</li>
                   </ol>
