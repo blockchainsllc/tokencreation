@@ -185,10 +185,13 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
                var key = JSON.stringify(result);
                var fileName = 'UTC--' + strftime.utc()('%Y-%m-%dT%H-%M-%S') + '.0--' + account.address.substring(2);
                var save = document.createElement('a');
-               save.href = "data:text/plain,"+escape(unescape(encodeURIComponent(key)));
+               $scope.account.downloaddata = save.href = "data:text/plain,"+escape(unescape(encodeURIComponent(key)));
+               
+               
+               
                save.innerHTML="dummy";
                save.target = '_blank';
-               save.download = fileName;
+               $scope.account.downloadfile = save.download = fileName;
                save.style.display='none';
                document.body.appendChild(save);
                save.click();
@@ -216,6 +219,10 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
                      showError("Error sending the key to the server",error,ev);
                   });
                }
+               
+               setTimeout(function(){
+                  $('#keydownload').attr("href",$scope.account.downloaddata);
+               },500);
               
       
                

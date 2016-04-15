@@ -107,7 +107,7 @@
                </div>
                <div layout="row" ng-show="password && repassword==password">
                   <md-input-container  style="margin-left:10px"  flex="45">
-                     <label>The email address where you would like to receive the private key.</label>
+                     <label>The email address</label>
                      <input name="email" ng-model="email" type="email" ng-pattern="/^.+@.+\..+$/"/>
                      <div ng-messages="etheraccount.email.$error" role="alert" multiple ng-show="etheraccount.email.$dirty || etheraccount.$submitted" >
                         <div ng-message="pattern"> Please enter a valid email address. </div>
@@ -122,19 +122,24 @@
                      </div>
                   </md-input-container>
                </div>
-               <div><md-button class="md-raised md-primary" ng-disabled="password!=repassword || ( email && email!=reemail) || !password">Create an Account and Download your Private Key</md-button>
+               <div>
+                  <md-button class="md-raised md-primary" ng-disabled="password!=repassword || ( email && email!=reemail) || !password">Create an Account and Download your Private Key</md-button>
+               
+                  <span ng-show="account.downloadfile" style="padding-left:20px">
+                     Download your <a id="keydownload" download="{{account.downloadfile}}" > <b>Private key</b></a>!
+                  </span>
 
-               <div style="margin-bottom:10px;margin-left:10px;margin-top:10px;color:red;">
-                  Your private key will be downloaded by your browser as a file without an extension, be sure to back up this file as well as your password!<br/> You will need <strong>both</strong> of them in order to have full access to your DAO tokens.<br/><br/> 
-                  <div ng-show="account.adr">
-                     Your new Ethereum account address is: <strong>{{account.adr}}</strong>
+                  <div style="margin-bottom:10px;margin-left:10px;margin-top:10px;color:red;">
+                     Your private key will be downloaded by your browser as a file without an extension, be sure to back up this file as well as your password!<br/> You will need <strong>both</strong> of them in order to have full access to your DAO tokens.<br/><br/> 
+                     <div ng-show="account.adr">
+                        Your new Ethereum account address is: <strong>{{account.adr}}</strong>
+                     </div>
                   </div>
-               </div>
-               <md-progress-linear id="accountProgressBar" md-mode="determinate" ng-show="accountProgress>0"  value="{{accountProgress}}"></md-progress-linear>
+                  <md-progress-linear id="accountProgressBar" md-mode="determinate" ng-show="accountProgress>0"  value="{{accountProgress}}"></md-progress-linear>
 
-               <div ng-show="accountProgress>0" style="margin-left:10px;">
-                  Generating and encrypting your private key : <span id="accountProgress"></span>
-               </div>
+                  <div ng-show="accountProgress>0" style="margin-left:10px;">
+                     Generating and encrypting your private key : <span id="accountProgress"></span>
+                  </div>
 
 
                 </div>
