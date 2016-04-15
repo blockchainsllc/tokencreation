@@ -16,6 +16,12 @@ To set it up, you need simply need to follow these steps:
        loading balancecheck
     </div>
     ```
+Also if you want to support for IE8-11 you should add this meta-tag in your header:
+
+    ```html
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />    
+    ```
+
     
 * at the end of the html-file include this script:
 * 
