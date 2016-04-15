@@ -108,6 +108,8 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
   // set scope-params  
   $scope.account={ existing:false, useExchange:'yes'};
   
+  $scope.canGenerateAccount = (window.crypto && window.crypto.getRandomValues) || Object.prototype.toString.call(window.opera) == '[object Opera]';
+  
   // TC-Handling
   $scope.acceptedTC = false;
   $scope.acceptTC = function(ev) {

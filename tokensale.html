@@ -64,7 +64,9 @@
             <md-radio-group ng-model="account.existing" >
                <md-radio-button value="yes">I already have an Ethereum wallet, and I know how to use it.</md-radio-button>
                <md-radio-button value="yes_mist">I would like instructions on how to install the Ethereum Wallet.</md-radio-button>
-               <md-radio-button value="no">I want to create a new Ethereum account here in the browser, to import later in any wallet.</md-radio-button>
+               <md-radio-button value="no" ng-disabled="!canGenerateAccount">I want to create a new Ethereum account here in the browser, to import later in any wallet.
+                  <div ng-show="!canGenerateAccount">You are using a browser, which is not safe to generate your Account here, so either use firfox or Chrome or simply install the Ethereum-Wallet!</div>   
+               </md-radio-button>
                <md-radio-button value="exchange" ng-show="account.currencyType=='FIAT'">I will create the account later and want to buy tokens directly in a exchange-platform</md-radio-button>
             </md-radio-group>
 
@@ -147,7 +149,7 @@
          </form>
 
           <div>
-             Please use the DAO address {{daoAddress}} and the <a href="src/dao-abi.json" download>JSON interface</a> to add the DAO contract to your Ethereum wallet. This is the only way you can fully participate in the DAO. 
+             Please use the DAO address {{daoAddress}} and the <a href="tokensale/src/dao-abi.json" download>JSON interface</a> to add the DAO contract to your Ethereum wallet. This is the only way you can fully participate in the DAO. 
           </div>
         </md-content>
       </div>

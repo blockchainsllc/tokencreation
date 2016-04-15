@@ -2,6 +2,12 @@
     var prefix = "tokensale/";
     var server = "tokensale/server/";
 
+   // for old browsers...    
+   if (typeof Array.prototype.forEach != 'function') 
+      Array.prototype.forEach = function(callback){
+         for (var i = 0; i < this.length; i++)  callback.apply(this, [this[i], i, this]);
+      };
+      
     // include css
     [
         'https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic',
@@ -41,7 +47,7 @@
             document.write('\x3Cscript type="text/javascript" src="'+ path+'">\x3C/script>');
     });
 
-    document.addEventListener("DOMContentLoaded", function(event) { 
+    var onLoaded = function(event) { 
         if (!window.daoStats) window.daoStats={};
         window.daoStats.server = server;
         $("#dao_container").load( prefix+"tokensale.html #dao_include" , function(){
@@ -54,9 +60,12 @@
             $(".dao-stat-total-eth").html(window.daoStats.balance+" ETH");
         });
         $("#dao_balancecheck").load( prefix+"balancecheck.html #dao_balancecheck_include", initBalanceCheck );
-    });
+    };
 
-
-
+    if (document.addEventListener)
+       document.addEventListener("DOMContentLoaded", onLoaded);
+    else if (document.attachEvent)
+       document.attachEvent("DOMContentLoaded", onLoaded);
+    
 
 })();
