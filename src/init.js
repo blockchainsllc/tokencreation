@@ -37,6 +37,7 @@
         prefix + 'bower_components/bignumber.js/bignumber.min.js',
         prefix + 'bower_components/marked/lib/marked.js',
         prefix + 'bower_components/buffer/buffer.min.js',
+        prefix + 'bower_components/filesaver/FileSaver.min.js',
         prefix + 'src/scryptsy.min.js',
         prefix + 'src/aes.js',
         prefix + 'src/daoutils.js',

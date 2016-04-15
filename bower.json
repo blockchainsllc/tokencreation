@@ -19,7 +19,8 @@
     "hooked-web3-provider": "git+https://github.com/ConsenSys/hooked-web3-provider.git",
     "marked": "git+https://github.com/chjj/marked.git",
     "strftime": "~0.9.2",
-    "jquery": "~1.12.2"
+    "jquery": "~1.12.2",
+    "filesaver":"git+https://github.com/eligrey/FileSaver.js.git"
   },
   "devDependencies": {
     "angular-material": "~0.11.4"

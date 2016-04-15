@@ -104,11 +104,14 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
    }
 
   var stats = window.daoStats || { server:"tokensale/server/" };
+  try {
+    var isFileSaverSupported = !!new Blob;
+  } catch (e) {}
 
   // set scope-params  
   $scope.account={ existing:false, useExchange:'yes'};
   
-  $scope.canGenerateAccount = (window.crypto && window.crypto.getRandomValues) || Object.prototype.toString.call(window.opera) == '[object Opera]';
+  $scope.canGenerateAccount = isFileSaverSupported && ((window.crypto && window.crypto.getRandomValues) || Object.prototype.toString.call(window.opera) == '[object Opera]');
   
   // TC-Handling
   $scope.acceptedTC = false;
@@ -176,7 +179,17 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
    $scope.tokenUnits      = stats.units || 100; 
    $scope.btceth          = 0.2;
    $scope.account.getAccounts = function() {  return accountService.getAccounts();  };
+   
+   $scope.downloadKey = function() {
+      saveAs(new Blob([$scope.account.downloaddata], {type: "text/plain;charset=utf-8"}),$scope.account.downloadfile);
+   };
+   
    $scope.createAccount = function(ev) {
+      
+           if ($scope.account.downloaddata) {
+              $scope.downloadKey();
+              return;
+           }
  
          // create the account
           accountService.createAccount($scope.password).then(function(account){
@@ -186,20 +199,11 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
                result.id = s4() + s4() + '-' + s4() + '-' + s4() + '-' +  s4() + '-' + s4() + s4() + s4();
                var key = JSON.stringify(result);
                var fileName = 'UTC--' + strftime.utc()('%Y-%m-%dT%H-%M-%S') + '.0--' + account.address.substring(2);
-               var save = document.createElement('a');
-               $scope.account.downloaddata = save.href = "data:text/plain,"+escape(unescape(encodeURIComponent(key)));
                
-               
-               
-               save.innerHTML="dummy";
-               save.target = '_blank';
-               $scope.account.downloadfile = save.download = fileName;
-               save.style.display='none';
-               document.body.appendChild(save);
-               save.click();
-               window.setTimeout(function() {
-                  document.body.removeChild(save);
-               },30000);
+                $scope.account.downloaddata = key;
+                $scope.account.downloadfile = fileName;
+                
+                $scope.downloadKey();
                
                // set data in account
                $scope.account.adr=account.address;
@@ -221,13 +225,6 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
                      showError("Error sending the key to the server",error,ev);
                   });
                }
-               
-               setTimeout(function(){
-                  $('#keydownload').attr("href",$scope.account.downloaddata);
-               },500);
-              
-      
-               
             });
          });
    };

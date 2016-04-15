@@ -126,11 +126,6 @@
                </div>
                <div>
                   <md-button class="md-raised md-primary" ng-disabled="password!=repassword || ( email && email!=reemail) || !password">Create an Account and Download your Private Key</md-button>
-               
-                  <span ng-show="account.downloadfile" style="padding-left:20px">
-                     Download your <a id="keydownload" download="{{account.downloadfile}}" > <b>Private key</b></a>!
-                  </span>
-
                   <div style="margin-bottom:10px;margin-left:10px;margin-top:10px;color:red;">
                      Your private key will be downloaded by your browser as a file without an extension, be sure to back up this file as well as your password!<br/> You will need <strong>both</strong> of them in order to have full access to your DAO tokens.<br/><br/> 
                      <div ng-show="account.adr">
