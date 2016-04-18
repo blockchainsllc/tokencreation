@@ -1,6 +1,8 @@
 (function() {
     var prefix = "tokensale/";
     var server = "tokensale/server/";
+    var addBootStrap = false;
+    var addJquery = false;
 
    // for old browsers...    
    if (typeof Array.prototype.forEach != 'function') 
@@ -16,7 +18,7 @@
         prefix + 'css/theme-aquatica.css',
         prefix + 'css/custom.css'
     ].forEach(function(path) {
-            document.write('\x3Clink rel="stylesheet" href="'+path+'"/>');
+        if (addBootStrap || path.indexOf('bootstrap')<0)    document.write('\x3Clink rel="stylesheet" href="'+path+'"/>');
     });
 
 
@@ -45,7 +47,7 @@
         prefix + 'src/AccountService.js',
         prefix + 'src/status.js'
     ].forEach(function(path) {
-            document.write('\x3Cscript type="text/javascript" src="'+ path+'">\x3C/script>');
+          if (addJquery || path.indexOf('jquery/')<0)    document.write('\x3Cscript type="text/javascript" src="'+ path+'">\x3C/script>');
     });
 
     var onLoaded = function(event) { 
