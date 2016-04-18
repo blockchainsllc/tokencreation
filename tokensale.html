@@ -20,7 +20,7 @@
          <div id="msgOutput"/>
         
         <div>
-            <md-button class="md-raised md-primary" ng-click="acceptTC($event)" >Purchase DAO Tokens</md-button>
+            <md-button class="md-raised md-primary get-tokens-button" ng-click="acceptTC($event)"  >&nbsp;Get DAO tokens&nbsp;</md-button>
         </div>
         
         
@@ -34,7 +34,7 @@
         </md-toolbar>
         <md-content class="md-padding content-border" >
            <p>
-              Select the currency you are using to purchase DAO tokens. The DAO lives on the Ethereum blockchain, for this reason it can only directly accept ETH, any other currency will be converted to ETH by one of our partners before being sent on your behalf to the DAO.
+              Select the currency you are using to get DAO tokens. The DAO lives on the Ethereum blockchain, for this reason it can only directly accept ETH, any other currency will be converted to ETH by one of our partners before being sent on your behalf to the DAO.
            </p>
            <form ng-cloak>
               <md-radio-group ng-model="account.currencyType" >
