@@ -116,15 +116,16 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
   // TC-Handling
   $scope.acceptedTC = false;
   $scope.acceptTC = function(ev) {
-      $http.get(prefixPath+"md/tc.md.txt").then(function(response) {
+      $http.get( stats.toc.url ||  prefixPath+"md/tc.md.txt").then(function(response) {
          var parentScope=$scope;
+         var txt = stats.toc.selector ? $(stats.toc.selector,response.data).html() : marked(response.data);
          $mdDialog.show({
             parent:      angular.element(document.body),
             targetEvent: ev,
             template:
                '<md-dialog aria-label="Terms and Conditions of the Slock Token Sale" ng-cloak >' +
                '  <md-toolbar><div class="md-toolbar-tools"><h2>Terms and Conditions of the DAO Token Sale</h2></div></md-toolbar>'+
-               '  <md-dialog-content class="tocContent" data-ng-init="init()" style="order:0;-webkit-order:0;-ms-flex-order:0"><div style="padding:10px">'+marked(response.data)+'</div></md-dialog-content>' +
+               '  <md-dialog-content class="tocContent" data-ng-init="init()" style="order:0;-webkit-order:0;-ms-flex-order:0"><div style="padding:10px">'+ txt+'</div></md-dialog-content>' +
                '  <md-dialog-actions style="text-align: right">' +
                '    <md-button ng-click="closeDialog()" class="md-primary">' +
                '      Close' +

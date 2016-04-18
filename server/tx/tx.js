@@ -28,7 +28,8 @@ function getStats() {
       tokens     : web3.toBigNumber(web3.fromWei(web3.eth.getStorageAt(tx.dao, 20),"ether")).toFormat(2),
       dao        : tx.dao,
       units      : 100,
-      shapeshift : tx.shapeshift
+      shapeshift : tx.shapeshift,
+      toc        : tx.ToC || {url:"explainer.html",selector:".dao-toc"}
    }
 }
 
