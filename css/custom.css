@@ -69,7 +69,9 @@ md-toolbar.checkBalance {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;   
 }
-
+.roundBorder {
+   z-index:2
+}
 
 ol{ margin-left: 0; padding-left: 30px; }
 
