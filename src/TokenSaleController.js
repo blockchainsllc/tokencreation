@@ -138,7 +138,8 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
             controller: function ToCController($scope, $mdDialog) {
                $scope.closeDialog  = function() {   $mdDialog.hide();     }
                $scope.acceptDialog = function() {   
-                  parentScope.acceptedTC=true;  
+                  parentScope.acceptedTC=true;
+                  $(".hide-after-tokensale").hide();                    
                   $mdDialog.hide();  
                   setTimeout(function() {
                      $('html, body').animate({
