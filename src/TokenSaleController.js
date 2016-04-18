@@ -233,7 +233,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
   
    $scope.getDataField = function() {
       return isValidAddress($scope.account.adr)
-        ? ('0x13d4bc24'+ normalizeAdr($scope.account.adr,64))
+        ? ('0xbaac5300'+ normalizeAdr($scope.account.adr,64))
         :'';
    }
   
@@ -279,7 +279,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
       $http.post(stats.server+"gatecoin.php",{
             dao     : $scope.daoAddress,
             amount  : btc+'',
-            data    : '0x13d4bc24'+ normalizeAdr($scope.account.adr,64)
+            data    : '0xbaac5300'+ normalizeAdr($scope.account.adr,64)
       },{}).then(function(result){
          $scope.account.isSendingBTC=false;
          if (result.data.error)
