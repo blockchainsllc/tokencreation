@@ -3,12 +3,12 @@
 
 (function(){
 
-var prefixPath="tokensale/";
+var prefixPath="tokencreation/";
    
 // define the module
 angular
-.module('tokensale', [ 'ngMaterial', 'ngAnimate','ngMessages' ])
-.controller('TokenSaleController', [ '$scope', '$mdBottomSheet', '$mdDialog','$log', '$q', '$http','$timeout','accountService',  TokenSaleController ])
+.module('tokencreation', [ 'ngMaterial', 'ngAnimate','ngMessages' ])
+.controller('TokenCreationController', [ '$scope', '$mdBottomSheet', '$mdDialog','$log', '$q', '$http','$timeout','accountService',  TokenCreationController ])
 .config(function($mdThemingProvider){
     $mdThemingProvider.theme('default')
     .primaryPalette('blue-grey')
@@ -90,7 +90,7 @@ function detectMistLink() {
 
 
 // define main-controller
-function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $http,$timeout,accountService) {
+function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $http,$timeout,accountService) {
 
    // helper for error-handling
    function showError(title,msg,ev) {
@@ -103,7 +103,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
             .targetEvent(ev));
    }
 
-  var stats = window.daoStats || { server:"tokensale/server/" };
+  var stats = window.daoStats || { server:"tokencreation/server/" };
   try {
     var isFileSaverSupported = !!new Blob;
   } catch (e) {}
@@ -140,7 +140,7 @@ function TokenSaleController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $htt
                $scope.closeDialog  = function() {   $mdDialog.hide();     }
                $scope.acceptDialog = function() {   
                   parentScope.acceptedTC=true;
-                  $(".hide-after-tokensale").hide();                    
+                  $(".hide-after-tokencreation").hide();                    
                   $mdDialog.hide();  
                   setTimeout(function() {
                      $('html, body').animate({

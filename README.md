@@ -1,4 +1,4 @@
-## TokenSale Library ##
+## TokenCreation Library ##
 
 The intention of this library is to be included in existing site in order to provide an easy way for people to buy such tokens.
 To set it up, you need simply need to follow these steps:
@@ -7,7 +7,7 @@ To set it up, you need simply need to follow these steps:
 
     ```html
     <div id="dao_container">
-       loading the TokenSale....
+       loading the TokeCreation....
     </div>
     <div id="dao_stats">
        the statisticss...
@@ -26,10 +26,10 @@ Also if you want to support for IE8-11 you should add this meta-tag in your head
 * at the end of the html-file include this script:
 * 
     ```html
-    <script src="tokensale/src/init.js"></script>
+    <script src="tokencreation/src/init.js"></script>
     ```
      
-* edit the configuration found in tokensale/server/config.json
+* edit the configuration found in tokencreation/server/config.json
 
     ```javascript
     {
@@ -57,13 +57,13 @@ Also if you want to support for IE8-11 you should add this meta-tag in your head
     }
     ```    
    
-* after putting these file to the server, you need to go into the directory tokensale and call
+* after putting these file to the server, you need to go into the directory tokencreation and call
 
     ```shell   
     bower update
     ```
     
-* and in the directory tokensale/server/tx
+* and in the directory tokencreation/server/tx
 
     ```shell
     npm install
@@ -78,14 +78,14 @@ Also if you want to support for IE8-11 you should add this meta-tag in your head
    The lines you should add ther should look like this:
    
    ```shell
-    0 * * * * /usr/bin/nodejs {PATHTOSITE}/tokensale/server/tx/updateStats.js /var/log/updatestats 2>&1
-    */5 * * * * /usr/bin/node {PATHTOSITE}/tokensale/server/tx/import.js >> /var/log/dao_tx 2>&1
+    0 * * * * /usr/bin/nodejs {PATHTOSITE}/tokencreation/server/tx/updateStats.js /var/log/updatestats 2>&1
+    */5 * * * * /usr/bin/node {PATHTOSITE}/tokencreation/server/tx/import.js >> /var/log/dao_tx 2>&1
     ```
    This will let the first cronjob update the statistics every hour and check for incoming transaction every 5 min.
    
 Before you test the site you may update the statistics even manually, if you don't want to wait for the cronjob to do it:
 
-Go to tokensale/server/tx and run
+Go to tokencreation/server/tx and run
 
     nodejs updateStats.js
  

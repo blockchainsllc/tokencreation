@@ -1,6 +1,6 @@
 (function() {
-    var prefix = "tokensale/";
-    var server = "tokensale/server/";
+    var prefix = "tokencreation/";
+    var server = "tokencreation/server/";
     var addBootStrap = false;
     var addJquery = false;
 
@@ -43,7 +43,7 @@
         prefix + 'src/scryptsy.min.js',
         prefix + 'src/aes.js',
         prefix + 'src/daoutils.js',
-        prefix + 'src/TokenSaleController.js',
+        prefix + 'src/TokenCreationController.js',
         prefix + 'src/AccountService.js',
         prefix + 'src/status.js'
     ].forEach(function(path) {
@@ -53,8 +53,8 @@
     var onLoaded = function(event) { 
         if (!window.daoStats) window.daoStats={};
         window.daoStats.server = server;
-        $("#dao_container").load( prefix+"tokensale.html #dao_include" , function(){
-            angular.bootstrap(document, ['tokensale']);
+        $("#dao_container").load( prefix+"tokencreation.html #dao_include" , function(){
+            angular.bootstrap(document, ['tokencreation']);
         });
         $("#dao_stats").load( prefix+"stats.html #dao_stats_include" , function(){
             $(".dao-stat-token-sold").html(window.daoStats.tokens * window.daoStats.units);
