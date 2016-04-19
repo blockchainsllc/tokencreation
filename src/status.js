@@ -2,6 +2,7 @@
 
 function initBalanceCheck() {
 
+   var lastCheckedValue="";
 
    // check eth-address
    function isValidAddress(adr) {
@@ -68,8 +69,9 @@ function initBalanceCheck() {
       }
       
       var adr = $("#dao_account_adr").val();
+      if (adr==lastCheckedValue && !event.type) return;
+      lastCheckedValue=adr;
       var stats = window.daoStats || { units:100};
-
       sendRequest("eth_getBalance",['0x'+normalizeAdr(adr),'latest'],function(balance) {
          sendRequest("eth_call",[{ to : window.daoStats.dao,  data : '0x70a08231'+ normalizeAdr(adr,64)},'latest'],function(tokens) {
             var web3 = new Web3();
@@ -82,7 +84,26 @@ function initBalanceCheck() {
  
     
    $('#dao_account_adr').on('keyup',function() {
-       this.setCustomValidity(isValidAddress($(this).val()) ? '' : 'a Account address has to have at least 40 digits (0-9,A-F)!');
+      var val = $(this).val();
+      var valid = isValidAddress(val);
+      if (valid) 
+         checkBalance({});
+      
+      
+      this.setCustomValidity((valid || val.length<10) ?'':'a Account address has to have at least 40 digits (0-9,A-F)!');
+      if (valid ) {
+         $("#dao_account_adr_valid").show();
+         $("#dao_account_adr_invalid").hide();
+      }
+      else if (val.length<10) {
+         $("#dao_account_adr_valid").hide();
+         $("#dao_account_adr_invalid").hide();
+      }
+      else {
+         $("#dao_account_adr_valid").hide();
+         $("#dao_account_adr_invalid").show();
+      }
+      
    });
    
    $("#dao_account_btn").click(checkBalance);
