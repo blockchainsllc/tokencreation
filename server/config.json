@@ -1,7 +1,7 @@
 {
-   "client"  : "http://localhost:8545",
-   "dao"     : "0xAb872F3aE424B209Cb9C060EE80dF04d99D47633",
-   "data"    : "/data/dao",
+   "client"  : "http://37.120.164.112:8545",
+   "dao"     : "0xac8B9227529a6892032088dD6A0CeF2739f1d1b1",
+  "data"    : "/data/dao",
    "mailer"  : {
        "from"    : "DAOHub <dao@daohub.org>",
        "sendKey" : {
