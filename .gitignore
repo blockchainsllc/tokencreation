@@ -1,0 +1,4 @@
+.vscode
+bower_components
+stats.js
+server/stats.js

@@ -4,9 +4,11 @@ var nodemailer = require('nodemailer');
 var Web3       = require("web3");
 
 var tx          = require("../config.json");
+var daoabi      = require("./dao.abi.json");
 var conf        = tx;
 var web3        = new Web3();
 var transporter = nodemailer.createTransport();
+
 
 function log(msg) {
    console.log(new Date().toISOString()+": "+msg);
@@ -16,16 +18,18 @@ function log(msg) {
 function configure() {
   web3.setProvider(new web3.providers.HttpProvider(tx.client));
   tx.web3=web3;
+  tx.daoContract = web3.eth.contract(daoabi).at(tx.dao);
 }
+
 
 
 function getStats() {
    if (!tx.web3) configure();
    return {
       balance    : web3.toBigNumber(web3.fromWei(web3.eth.getBalance(tx.dao),"ether")).toFormat(2),
-      price      : web3.toBigNumber( web3.toBigNumber(web3.eth.call({to:tx.dao,data:'0x1f2dc5ef'})).toNumber() / 20).toFormat(2),
-      daysLeft   : parseInt ((web3.toBigNumber(web3.eth.getStorageAt(tx.dao, 13)).toNumber()- Date.now()/1000)/(3600*24)),
-      tokens     : web3.toBigNumber(web3.fromWei(web3.eth.getStorageAt(tx.dao, 20),"ether")).toFormat(2),
+      price      : web3.toBigNumber( web3.toBigNumber(tx.daoContract.divisor()).toNumber() / 20).toFormat(2),
+      daysLeft   : parseInt ((web3.toBigNumber(tx.daoContract.closingTime()).toNumber()- Date.now()/1000)/(3600*24)),
+      tokens     : web3.toBigNumber(web3.fromWei(tx.daoContract.totalSupply(),"ether")).toFormat(2),
       dao        : tx.dao,
       units      : 100,
       shapeshift : tx.shapeshift,
