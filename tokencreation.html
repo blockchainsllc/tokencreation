@@ -38,10 +38,26 @@
            </p>
            <form ng-cloak>
               <md-radio-group ng-model="account.currencyType" >
-                 <md-radio-button value="ETH">ETH (Direct)</md-radio-button>
-                 <md-radio-button value="BTC">BTC (using Gatecoin)</md-radio-button>
-                 <md-radio-button value="COINS">BTC or other Digital Currencies (using ShapeShift)</md-radio-button>
-                 <md-radio-button value="FIAT">BTC or Fiat (Bity, Bittrex &Gatecoin) </md-radio-button>
+                 <md-radio-button value="ETH">ETH (Direct) 
+                     <md-tooltip >
+                        Use your existing Ether directly from a your account or even from your wallet on exchanges like kraken.com. 
+                    </md-tooltip>
+                </md-radio-button>
+                 <md-radio-button value="BTC">BTC (using Gatecoin) 
+                     <md-tooltip  >
+                        Use Bitcoin to transfer them to the DAO directly on this site. The converting will be done by gatecoin.
+                    </md-tooltip>
+                </md-radio-button>
+                 <md-radio-button value="COINS">BTC or other Digital Currencies (using ShapeShift) 
+                     <md-tooltip  >
+                        Any other digital coins (including Bitcoin) you may want to use can be converted with <b>Shapeshift</b> and directly transfered to the DAO.
+                    </md-tooltip>
+                </md-radio-button>
+                 <md-radio-button value="FIAT">BTC or Fiat (Bity, Bittrex amp; Gatecoin) 
+                     <md-tooltip >
+                        If you have EUR, USD or other currencies. You can use these Exchanges to create your tokens. (Of course all of them also support Bitcoins)
+                    </md-tooltip>
+                </md-radio-button>
               </md-radio-group>
 
            </form>
