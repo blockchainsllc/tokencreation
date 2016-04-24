@@ -38,28 +38,27 @@
            </p>
            <form ng-cloak>
               <md-radio-group ng-model="account.currencyType" >
-                 <md-radio-button value="ETH">ETH (Direct) 
+                 <md-radio-button value="ETH">ETH (No extra conversions required) 
                      <md-tooltip >
-                        Use your existing Ether directly from a your account or even from your wallet on exchanges like kraken.com. 
+                         Choose this if you want to use ETH that you already own and you want to securely hold the DAO tokens yourself. 
                     </md-tooltip>
                 </md-radio-button>
-                 <md-radio-button value="BTC">BTC (using Gatecoin) 
+                 <md-radio-button value="BTC">BTC (using Gatecoin on this site) 
                      <md-tooltip  >
-                        Use Bitcoin to transfer them to the DAO directly on this site. The converting will be done by gatecoin.
+                        Choose this if you want to use BTC directly on this website enabled by <b>Gatecoin</b> and you want to securely hold the DAO tokens yourself.
                     </md-tooltip>
                 </md-radio-button>
-                 <md-radio-button value="COINS">BTC or other Digital Currencies (using ShapeShift) 
+                 <md-radio-button value="COINS">BTC or other digital currencies (using a ShapeShift window) 
                      <md-tooltip  >
-                        Any other digital coins (including Bitcoin) you may want to use can be converted with <b>Shapeshift</b> and directly transfered to the DAO.
+                        Choose this if you want to use any digital currencies <b>ShapeShift</b> supports and you want to securely hold the DAO tokens yourself.
                     </md-tooltip>
                 </md-radio-button>
-                 <md-radio-button value="FIAT">BTC or Fiat (Bity, Bittrex amp; Gatecoin) 
+                 <md-radio-button value="FIAT">BTC, USD, EUR or CHF (using external sites Bity, Bittrex or Gatecoin) 
                      <md-tooltip >
-                        If you have EUR, USD or other currencies. You can use these Exchanges to create your tokens. (Of course all of them also support Bitcoins)
+                        Choose this if you want to use national currencies, or you would like to hold your DAO tokens on an exchange website.
                     </md-tooltip>
                 </md-radio-button>
               </md-radio-group>
-
            </form>
            
            
