@@ -123,8 +123,8 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
             parent:      angular.element(document.body),
             targetEvent: ev,
             template:
-               '<md-dialog aria-label="Terms and Conditions of the Slock Token Sale" ng-cloak >' +
-               '  <md-toolbar><div class="md-toolbar-tools"><h2>Terms and Conditions of the DAO Token Sale</h2></div></md-toolbar>'+
+               '<md-dialog aria-label="Explanation of Terms and Disclaimer" ng-cloak >' +
+               '  <md-toolbar><div class="md-toolbar-tools"><h2>Explanation of Terms and Disclaimer</h2></div></md-toolbar>'+
                '  <md-dialog-content class="tocContent" data-ng-init="init()" style="order:0;-webkit-order:0;-ms-flex-order:0"><div style="padding:10px">'+ txt+'</div></md-dialog-content>' +
                '  <md-dialog-actions style="text-align: right">' +
                '    <md-button ng-click="closeDialog()" class="md-primary">' +
