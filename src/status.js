@@ -90,7 +90,7 @@ function initBalanceCheck() {
          checkBalance({});
       
       
-      this.setCustomValidity((valid || val.length<10) ?'':'a Account address has to have at least 40 digits (0-9,A-F)!');
+      this.setCustomValidity((valid || val.length<10) ?'':'Please enter an Ethereum account address composed of at least 40 characters (0-9,A-F)!');
       if (valid ) {
          $("#dao_account_adr_valid").show();
          $("#dao_account_adr_invalid").hide();
@@ -109,11 +109,6 @@ function initBalanceCheck() {
    $("#dao_account_btn").click(checkBalance);
    
    $('#dao_account_form').submit(checkBalance);    
-      
-      
-      
-    
-    
     
 }
 

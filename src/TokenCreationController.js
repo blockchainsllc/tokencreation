@@ -132,7 +132,7 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
                '    </md-button>' +
                '    <md-button ng-click="acceptDialog()" class="md-primary" ng-disabled="!scrolled">' +
                '       <md-tooltip md-visible="!scrolled">You must read the T&Cs to the end in order to accept them.</md-tooltip> ' +
-               '      Accept' +
+               '      I Accept' +
                '    </md-button>' +
                '  </md-dialog-actions>' +
                '</md-dialog>',
