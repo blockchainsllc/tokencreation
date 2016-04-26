@@ -25,10 +25,12 @@ function configure() {
 
 function getStats() {
    if (!tx.web3) configure();
+   var end = web3.toBigNumber(tx.daoContract.closingTime()).toNumber();
    return {
       balance    : web3.toBigNumber(web3.fromWei(web3.eth.getBalance(tx.dao),"ether")).toFormat(2),
       price      : web3.toBigNumber( web3.toBigNumber(tx.daoContract.divisor()).toNumber() / 20).toFormat(2),
       daysLeft   : parseInt ((web3.toBigNumber(tx.daoContract.closingTime()).toNumber()- Date.now()/1000)/(3600*24)),
+      end        : new Date(end*1000).toUTCString(),
       tokens     : web3.toBigNumber(web3.fromWei(tx.daoContract.totalSupply(),"ether")).toFormat(2),
       dao        : tx.dao,
       units      : 100,

@@ -114,7 +114,7 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
   $scope.canGenerateAccount = isFileSaverSupported && ((window.crypto && window.crypto.getRandomValues) || Object.prototype.toString.call(window.opera) == '[object Opera]');
   
   // TC-Handling
-  $scope.acceptedTC = true;
+  $scope.acceptedTC = false;
   $scope.acceptTC = function(ev) {
       $http.get( stats.toc.url ||  prefixPath+"md/tc.md.txt").then(function(response) {
          var parentScope=$scope;
