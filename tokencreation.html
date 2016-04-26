@@ -34,29 +34,29 @@
         </md-toolbar>
         <md-content class="md-padding content-border" >
            <p>
-              Select the currency you are using to Create DAO tokens. The DAO lives on the Ethereum blockchain, for this reason it can only directly accept ETH, any other currency will be converted to ETH before being sent to the DAO.
+              Select the currency you want to use to Create DAO tokens. The DAO lives on the Ethereum blockchain, for this reason it can only directly accept ETH. Any other currency will be converted to ETH before being sent to the DAO.
            </p>
 
             <form ng-cloak>
               <md-radio-group ng-model="account.currencyType" >
                  <md-radio-button value="ETH">ETH (Recommended) 
                     <!--  <md-tooltip md-direction="bottom" md-delay="0">
-                         Select to use ETH that you already own and want to securely hold the DAO tokens yourself
+                         Select to use ETH that you already own. You will securely hold the DAO tokens yourself.
                     </md-tooltip> -->
                 </md-radio-button>
-                 <md-radio-button value="BTC">BTC (uses Gatecoin) 
+                 <md-radio-button value="BTC">BTC (Uses Gatecoin) 
                     <!--  <md-tooltip  md-direction="bottom" md-delay="0">
-                        Select to use BTC directly on this website and want to securely hold the DAO tokens yourself
+                        Select to use BTC directly on this website. You will securely hold the DAO tokens yourself.
                     </md-tooltip> -->
                 </md-radio-button>
-                 <md-radio-button value="COINS">BTC or other digital currencies (uses ShapeShift) 
+                 <md-radio-button value="COINS">BTC or other digital currencies (Uses ShapeShift) 
                     <!--  <md-tooltip md-direction="bottom" md-delay="0" >
-                       Select to use any digital currencies supported by ShapeShift and want to securely hold the DAO tokens yourself
+                       Select to use any digital currencies supported by ShapeShift. You will securely hold the DAO tokens yourself.
                     </md-tooltip> -->
                 </md-radio-button>
-                 <md-radio-button value="FIAT">BTC, USD, EUR or CHF (using Bity, Bittrex or Gatecoin) 
+                 <md-radio-button value="FIAT">BTC, USD, EUR or CHF (Uses Bity, Bittrex or Gatecoin) 
                     <!--  <md-tooltip md-direction="bottom" md-delay="0">
-                        Select to use national currencies, or you would prefer to hold your DAO tokens on an exchange website
+                        Select to use national currencies, or if you would prefer to hold your DAO tokens on an exchange website.
                     </md-tooltip> -->
                 </md-radio-button>
               </md-radio-group>
@@ -77,12 +77,12 @@
          </p>
          <form name="etheraccount" ng-submit="createAccount()" >
             <md-radio-group ng-model="account.existing" >
-               <md-radio-button value="yes">I already have an Ethereum wallet, and I know how to use it (Recommended) </md-radio-button>
+               <md-radio-button value="yes">I already have an Ethereum wallet, and I know how to use it </md-radio-button>
                <md-radio-button value="yes_mist">I would like instructions on how to install the Ethereum Wallet.</md-radio-button>
                <md-radio-button value="no" ng-disabled="!canGenerateAccount">I want to create a new Ethereum account here in the browser, to import later in any wallet.
-                  <div ng-show="!canGenerateAccount">You are using a browser, which is not safe to generate your Account here, so either use firfox or Chrome or simply install the Ethereum-Wallet!</div>   
+                  <div ng-show="!canGenerateAccount">You are using a browser, which is not safe to generate your Account here, so either switch to Firefox or Chrome or simply install the Ethereum Wallet!</div>   
                </md-radio-button>
-               <md-radio-button value="exchange" ng-show="account.currencyType=='FIAT'">I will create my Ethereum account later so I can vote and control the private keys of my DAO tokens, for now I would like to store them on an exchange.</md-radio-button>
+               <md-radio-button value="exchange" ng-show="account.currencyType=='FIAT'">I will create my Ethereum account later so I can vote and control my DAO tokens' the private keys, for now I would like to store them on an exchange.</md-radio-button>
             </md-radio-group>
 
              <div ng-show="account.existing=='yes' && account.currencyType!='ETH' && account.currencyType!='FIAT'">
@@ -191,14 +191,14 @@
 
             <!-- use the mist-browser -->
             <div ng-show="account.existing=='yes_mist'">
-               <p>Installing and seting up the Ethereum Wallet:</p>
+               <p>Installing and setting up the Ethereum Wallet:</p>
                <ol>
-                  <li>Download the most recent version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>;  and for extra assistence, <a href="https://youtu.be/Y3JfLgjqNU4" target="_blank">this video can guide you through the installation process.</a>    </li>
+                  <li>Download the a stable version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>; and for extra assistence, <a href="https://youtu.be/Y3JfLgjqNU4" target="_blank">this video can guide you through the installation process.</a>    </li>
                   <li>Unzip the file where you want install the program.</li>
                   <li>Open the Ethereum-Wallet application file.</li>
                   <li>Follow the instructions to set up your new Ethereum Account. <br/>(It will likely take several hours to synchronize the blockchain).</li>
                   <li>Make a note of your Ethereum account address.</li>
-                  <li>Back up the Ethereum account you intend to use and load ETH onto the account if you desire (We recommend at least 0.1 ETH). <a href="https://www.youtube.com/watch?v=CZ8ZCtbxD0M" target="_blank">this video</a> can guide you through the that process.  
+                  <li>Back up the Ethereum account you intend to use and load ETH onto the account (We recommend at least 0.1 ETH). <a href="https://www.youtube.com/watch?v=CZ8ZCtbxD0M" target="_blank">this video</a> can guide you through the that process.  
                   </li>
                   <li ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
                      Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address:<br/>
@@ -219,7 +219,7 @@
                        I understand that if I use an exchange that does not have an option to include Data with my withdrawal there is a chance I will not receive DAO tokens and I could lose the ETH I withdrew.<br><br>
 
                         When withdrawing from an exchange directly to the DAO, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. 
-                        If you don't, your tokens will be owned by the wallet of the exchange and may lose both your ETH and your DAO tokens. Do not use an exchange that does not support sending data with your ETH withdrawal.
+                        If you don't, your tokens will be owned by the exchange and may lose both your ETH and your DAO tokens. Do not use an exchange that does not support sending data with your ETH withdrawal.
                      </p>
                      <div>
                         <form name="wallet2">
@@ -280,7 +280,7 @@
                <div ng-show="account.existing=='yes'  ">
                   <p>
                      <div ng-show="account.useExchange=='no'">
-                          Your DAO token will be Created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
+                          Your DAO tokens will be Created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                           <pre>{{daoAddress}}</pre> <br/>
                           <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/>
                             This is expected as you are sending ETH directly to the DAO contract via your wallet. <br/><br/>
@@ -340,7 +340,7 @@
                   <p>
                     I understand that if I use an exchange that does not have an option to include Data with my withdrawal there is a chance I will not receive DAO tokens and I could lose the ETH I withdrew.<br><br>
 
-                     When withdrawing from an exchange directly to the DAO, you <b style="color:red">MUST</b> add data to the withdrawl, so the DAO can register your wallet. 
+                     When withdrawing from an exchange directly to the DAO, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. 
                         If you don't, your tokens will be owned by the wallet of the exchange and may lose both your ETH and your DAO tokens. Do not use an exchange that does not support sending data with your ETH withdrawal.
                   </p>
                   <div ng-show="account.existing=='yes'">
@@ -569,7 +569,7 @@
                   </ol>
                   
                   <p style="font-size:12px; padding-top:15px">
-                        (*) Please note that to convert more than 250 EUR, USD or CHF you will have to verify your identity with Bity. Once logged in, this straightforward process can be found here: <a href="https://bity.com/dashboard/kyc" target="_new">https://bity.com/dashboard/kyc</a>        
+                        (*) Please note that to convert more than 250 EUR, USD or CHF you will have to verify your identity with Bity. Once logged in, this straightforward process can be found here: <a href="https://bity.com/dashboard/kyc" target="_new">https://bity.com/dashboard/kyc</a>   
                   </p>
                   
                   
