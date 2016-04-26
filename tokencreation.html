@@ -79,14 +79,14 @@
             <md-radio-group ng-model="account.existing" >
                <md-radio-button value="yes">I already have an Ethereum wallet, and I know how to use it </md-radio-button>
                <md-radio-button value="yes_mist">I would like instructions on how to install the Ethereum Wallet.</md-radio-button>
-               <md-radio-button value="no" ng-disabled="!canGenerateAccount">I want to create a new Ethereum account here in the browser, to import later in any wallet.
+               <md-radio-button value="yes_wallet" ng-disabled="!canGenerateAccount">I want to create a new Ethereum account here in the browser, to import later in any wallet.
                   
                   <div ng-show="!canGenerateAccount">You are using a browser, which is not safe to generate your Account here, so either switch to Firefox or Chrome or simply install the Ethereum Wallet!</div>   
                </md-radio-button>
                <md-radio-button value="exchange" ng-show="account.currencyType=='FIAT'">I will create my Ethereum account later so I can vote and control my DAO tokens' the private keys, for now I would like to store them on an exchange.</md-radio-button>
             </md-radio-group>
 
-             <div ng-show="account.existing=='yes' && account.currencyType!='ETH' && account.currencyType!='FIAT'">
+             <div ng-show="(account.existing=='yes' || account.existing=='yes_wallet') && account.currencyType!='ETH' && account.currencyType!='FIAT'">
                <md-input-container style="margin-left:10px">
                   <label>Your Ethereum Account's Address</label>
                   <input md-maxlength="42" md-minlength="40" name="adr" ng-model="account.adr" ethaddress />
@@ -95,67 +95,12 @@
                   </div>                  
                </md-input-container>
             </div>
-
-
-            <div ng-show="account.existing=='no'" >
-              <div style="margin-bottom:0px;margin-left:10px;margin-top:40px;">
-                Please enter a secure password and save it carefully, you will need it to access your DAO tokens.
-              </div>   
-               <div layout="row" >
-                  <md-input-container  style="margin-left:10px" flex="45">
-                    <label>Please enter a secure password.</label>
-                    <input id="account_password" required name="password" ng-model="password" type="password" ng-minlength="7"/>
-                    <div ng-messages="etheraccount.password.$error" role="alert" multiple ng-show="etheraccount.password.$dirty || etheraccount.$submitted" >
-                       <div ng-message="minlength"> Please enter a password with at least 7 characters. </div>
-                    </div>
-                  </md-input-container>
-                  <md-input-container style="margin-left:20px" ng-show="password" flex="45">
-                     <label>Re-enter your password to confirm</label>
-                     <input required ng-model="repassword" name="repassword" type="password" compare-to="password" />
-                     <div ng-messages="etheraccount.repassword.$error" role="alert" multiple ng-show="etheraccount.repassword.$dirty || etheraccount.$submitted" >
-                        <div ng-message="required"> Please re-enter your password to confirm. </div>
-                        <div ng-message="compareTo"> Passwords do not match, please try again. </div>
-                     </div>
-                  </md-input-container>
-               </div>
-               <div layout="row" ng-show="password && repassword==password">
-                  <p style="padding-left:13px;">
-                     (Optional) If you would like to back up your private key by having it emailed to you, please enter your email address below. 
-                  </p>
-               </div>
-               <div layout="row" ng-show="password && repassword==password">
-                  <md-input-container  style="margin-left:10px"  flex="45">
-                     <label>The email address</label>
-                     <input name="email" ng-model="email" type="email" ng-pattern="/^.+@.+\..+$/"/>
-                     <div ng-messages="etheraccount.email.$error" role="alert" multiple ng-show="etheraccount.email.$dirty || etheraccount.$submitted" >
-                        <div ng-message="pattern"> Please enter a valid email address. </div>
-                     </div>
-                  </md-input-container>
-                  <md-input-container style="margin-left:20px" ng-show="email"  flex="45">
-                     <label>Confirm your email address.</label>
-                     <input ng-model="reemail" name="reemail" type="email" compare-to="email" />
-                     <div ng-messages="etheraccount.reemail.$error" role="alert" multiple ng-show="etheraccount.reemail.$dirty || etheraccount.$submitted" >
-                        <div ng-message="required"> Please re-enter the email. </div>
-                        <div ng-message="compareTo"> Both email addresses need to match. </div>
-                     </div>
-                  </md-input-container>
-               </div>
-               <div>
-                  <md-button class="md-raised md-primary" ng-disabled="password!=repassword || ( email && email!=reemail) || !password">Create an Account and Download your Private Key</md-button>
-                  <div style="margin-bottom:10px;margin-left:10px;margin-top:10px;color:red;">
-                     Your private key will be downloaded by your browser as a file without an extension, be sure to back up this file as well as your password!<br/> You will need <strong>both</strong> of them in order to have full access to your DAO tokens.<br/><br/> 
-                     <div ng-show="account.adr">
-                        Your new Ethereum account address is: <strong>{{account.adr}}</strong>
-                     </div>
-                  </div>
-                  <md-progress-linear id="accountProgressBar" md-mode="determinate" ng-show="accountProgress>0"  value="{{accountProgress}}"></md-progress-linear>
-
-                  <div ng-show="accountProgress>0" style="margin-left:10px;">
-                     Generating and encrypting your private key : <span id="accountProgress"></span>
-                  </div>
-
-
-                </div>
+            
+            
+            
+            <div ng-show="account.existing=='yes_wallet'">
+               <p>Setting up your Ethereum Wallet:</p>
+              <iframe id="myetherwallet" width="100%" height="800" src="https://www.myetherwallet.com/" style="border-style: none;"/>
             </div>
          </form>
 
@@ -278,7 +223,7 @@
            <div ng-show="account.currencyType=='ETH'"> 
 
                <!--do it directly -->
-               <div ng-show="account.existing=='yes'  ">
+               <div ng-show="account.existing=='yes' || account.existing=='yes_wallet'">
                   <p>
                      <div ng-show="account.useExchange=='no'">
                           Your DAO tokens will be Created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
@@ -294,57 +239,15 @@
                   </p>
                </div>
                
-               <!-- send ETH-Transaction -->
-               <div ng-show="account.existing=='no' ">
-                  
-                  <div ng-show="account.useExchange=='no'">
-                     
-                  
-                     <form name="etherForm" ng-submit="sendEther($event)" >
-                        <div ng-show="account.unlocked && account.adr">
-                           <div>
-                              <p>How much ETH would you like to use to Create DAO tokens?</p>
-                              
-                              <div class="row">
-                                 <md-input-container class="col-md-6">
-                                    <label>The amount of ETH used to Create DAO Tokens</label>
-                                    <input required type="number" step="any" name="ether" min="0" max="1000000" id="account_ether" ng-model="account.ether" />
-                                    <div ng-messages="etherForm.ether.$error" role="alert" multiple>
-                                       <div ng-message="required"> Please define an amount of ETH.</div>
-                                       <div ng-message="min">Please enter a larger amount of ETH.</div>
-                                       <div ng-message="max">You cannot transfer more than 1000000 with one transaction!</div>
-                                    </div>
-                                 </md-input-container>
-                                 <div class="col-md-6" style="padding-top:40px"> ETH &nbsp; &nbsp; &nbsp; &nbsp; = approx. <b>{{(account.ether||0)/tokenPrice*tokenUnits | number:2}}</b> DAO tokens</div>
-                              </div>
 
-                              <div><md-button class="md-raised md-primary" ng-disabled="!account.ether || account.isSendingEther || !account.adr">Sign Transaction {{ account.success ? 'again' : ''}}</md-button></div>
-                              <md-progress-linear md-mode="indeterminate" ng-show="account.isSendingEther"></md-progress-linear>
-                              <div ng-show="account.isSendingEther"><p>{{account.status}}</p></div>
-
-                           </div>
-                        <div style="margin-bottom:10px;margin-left:10px;margin-top:10px;">
-                              <p>Pressing the "Sign Transaction" button will sign and broadcast an ETH transaction with your newly created account for the pledged amount. This signed transaction will Create DAO tokens as soon the balance of your newly generated account {{account.adr}} exceeds the pledged amount of ETH. To fully participate in the DAO this account will need hold a small balance of ETH. We recommend you send at least 0.1 ETH extra.<br/><br/>
-                              Note that this does not lock in the current Creation rate of the DAO tokens. The Creation rate of DAO tokens will be the rate at the time the ETH is sent to your newly created account. If you send ETH to this account after the Creation phase has ended, you will not receive any DAO Tokens.
-                           </div>
-                        </div>
-                     </form>
-                   </div>
-                   
-                     
-
-
-                   
-               </div>
-               
-               <div ng-show="account.useExchange=='yes' && account.existing!='yes_mist'">
+               <div ng-show="account.useExchange=='yes' && (account.existing!='yes_mist' || account.existing!='yes_wallet')">
                   <p>
                     I understand that if I use an exchange that does not have an option to include Data with my withdrawal there is a chance I will not receive DAO tokens and I could lose the ETH I withdrew.<br><br>
 
                      When withdrawing from an exchange directly to the DAO, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. 
-                        If you don't, your tokens will be owned by the wallet of the exchange and may lose both your ETH and your DAO tokens. Do not use an exchange that does not support sending data with your ETH withdrawal.
+                     If you don't, your tokens will be owned by the wallet of the exchange and may lose both your ETH and your DAO tokens. Do not use an exchange that does not support sending data with your ETH withdrawal.
                   </p>
-                  <div ng-show="account.existing=='yes'">
+                  <div ng-show="account.existing=='yes' || account.existing=='yes_wallet' ">
                      <form name="wallet2">
                         <md-input-container style="margin-left:0px">
                            <label>Address of your wallet to register</label>

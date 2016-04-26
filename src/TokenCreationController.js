@@ -109,12 +109,12 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
   } catch (e) {}
 
   // set scope-params  
-  $scope.account={ existing:false, useExchange:'yes'};
+  $scope.account={ existing:false, useExchange:'no'};
   
   $scope.canGenerateAccount = isFileSaverSupported && ((window.crypto && window.crypto.getRandomValues) || Object.prototype.toString.call(window.opera) == '[object Opera]');
   
   // TC-Handling
-  $scope.acceptedTC = false;
+  $scope.acceptedTC = true;
   $scope.acceptTC = function(ev) {
       $http.get( stats.toc.url ||  prefixPath+"md/tc.md.txt").then(function(response) {
          var parentScope=$scope;
@@ -339,11 +339,10 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
    $scope.needsAccount = function() {  return $scope.acceptedTC && $scope.account.currencyType; };
    
    $scope.showBuy   = function() {  
-      if ($scope.account.currencyType=='FIAT' && $scope.account.existing!='yes_mist') return false;
+      if ($scope.account.currencyType=='FIAT' && $scope.account.existing!='yes_mist' && $scope.account.existing!='yes_wallet') return false;
       return $scope.needsAccount() &&  $scope.account.existing && (
-         $scope.account.existing=='no' ? 
-             ($scope.account.unlocked && $scope.account.currencyType!='FIAT') : 
-             ($scope.account.currencyType=='ETH' || ( isValidAddress($scope.account.adr) || $scope.account.existing=='yes_mist'))
+            ($scope.account.currencyType=='ETH' || 
+               ( isValidAddress($scope.account.adr) || $scope.account.existing=='yes_mist'))
          ); 
    };
    

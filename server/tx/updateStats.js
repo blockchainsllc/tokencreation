@@ -2,6 +2,7 @@ var fs   = require('fs');
 var tx   = require("./tx.js");
 var stats= tx.getStats();
 var code = 'window.daoStats='+JSON.stringify(stats)+"\n" +
+           '$(".dao-stat-adr").html(window.daoStats.dao);\n'+
            '$(".dao-stat-token-sold").html(window.daoStats.tokens * window.daoStats.units);\n'+
            '$(".dao-stat-days-left").html(window.daoStats.daysLeft);\n'+
            '$(".dao-stat-token-price").html(window.daoStats.price+" ETH");\n'+
