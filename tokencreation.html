@@ -41,22 +41,22 @@
               <md-radio-group ng-model="account.currencyType" >
                  <md-radio-button value="ETH"><b>ETH</b> (Recommended)
                   <div class="info"> 
-                     Select to use ETH that you already own. You will securely hold the DAO tokens yourself.
+                     Select to use ETH that you already own.
                   </div>
                 </md-radio-button>
                  <md-radio-button value="BTC"><b>BTC</b> (Uses Gatecoin) 
                     <div  class="info">
-                        Select to use BTC directly on this website. You will securely hold the DAO tokens yourself.
+                        Select to use BTC purchased directly on this website. 
                     </div>
                 </md-radio-button>
                  <md-radio-button value="COINS"><b>BTC or other digital currencies</b> (Uses ShapeShift) 
                     <div  class="info">
-                       Select to use any digital currencies supported by ShapeShift. You will securely hold the DAO tokens yourself.
+                       Select to use any digital currencies supported by ShapeShift. 
                     </div  class="info">
                 </md-radio-button>
                  <md-radio-button value="FIAT"><b>BTC, USD, EUR or CHF</b> (Uses Bity, Bittrex or Gatecoin)
                  <div  class="info">
-                        Select to use national currencies, or if you would prefer to hold your DAO tokens on an exchange website.
+                      Select to use national currencies, or if you would prefer to hold your DAO tokens on an exchange.
                  </div>
                 </md-radio-button>
               </md-radio-group>
@@ -125,7 +125,7 @@
                   <div>
                       <form>
                         <md-radio-group ng-model="account.useExchange"  >
-                          <md-radio-button value="no">By sending ETH directly to the DAO from my Wallet (Recommended)</md-radio-button>
+                          <md-radio-button value="no">By sending ETH directly to the DAO from my wallet (Recommended)</md-radio-button>
 
                           <md-radio-button value="yes">I want to withdraw the ETH from an exchange supporting the DAO Creation with additional data</md-radio-button>
                            
@@ -180,7 +180,7 @@
                         
                      </div>
                      <div ng-show="getDataField()!=''">
-                        Your DAO token will be Created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
+                        Your DAO token will be created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                         <pre>{{daoAddress}}</pre> <br/><br/>
                         
                         The data you need to add is: <br/>
@@ -226,13 +226,14 @@
                <div ng-show="account.existing=='yes' || account.existing=='yes_wallet'">
                   <p>
                      <div ng-show="account.useExchange=='no'">
-                          Your DAO tokens will be Created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
+                          Your DAO tokens will be created instantly.  <br/>
+                          Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                           <pre>{{daoAddress}}</pre> <br/>
                           <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/>
                             This is expected as you are sending ETH directly to the DAO contract via your wallet. <br/><br/>
 
-                          After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html">Creation page</a>. <br/>
-                          <a href="voting.html">Voting</a> on proposals will go live at the end of the Creation phase. <br/><br/>
+                          After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/>
+                          <a href="voting.html" target="_new">Voting</a> on proposals will go live at the end of the Creation phase.<br/><br/>
 
                           You can safely close this page after your transfer is complete.<br>
                      </div>
@@ -260,7 +261,8 @@
                      
                   </div>
                   <div ng-show="getDataField()!=''">
-                     Your DAO tokens will be Created instantly.  <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
+                     Your DAO tokens will be created instantly. 
+                     <br/>  Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                      <pre>{{daoAddress}}</pre> <br/><br/>
                      
                      The data you need to add is: <br/>
