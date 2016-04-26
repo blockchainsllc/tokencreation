@@ -90,3 +90,12 @@ ol li { padding-left: 10px;  font-size: 16px;    line-height: 34px;}
     text-decoration: none;
     outline: none;
 }
+
+
+md-radio-button .md-ink-ripple {
+        vertical-align: top;
+}
+
+.info {
+    font-size: 12px;
+}
