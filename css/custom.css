@@ -79,4 +79,14 @@ ol li { padding-left: 10px;  font-size: 16px;    line-height: 34px;}
 
 
 
+.fact a {
+    color: #000;
+    outline: none;
+}
 
+.fact a:hover,
+.fact a:focus {
+    color: #000;
+    text-decoration: none;
+    outline: none;
+}
