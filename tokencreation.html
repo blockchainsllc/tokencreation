@@ -150,13 +150,14 @@
                                 After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully transferred your ETH.<br>
                             </div>
                             <div ng-show="account.currencyType=='ETH' && account.useExchange=='yes'">
+                                <p>You can use the 'withdraw' function of your exchange to send ETH to the DAO, which in turn will associate the Token to the wallet address you specify below.</p>
                                 <p>
                                    <strong>Important</strong> when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
                                 </p>
                                 <div>
                                     <form name="wallet2">
                                         <md-input-container style="margin-left:0px">
-                                            <label>Address of your new wallet</label>
+                                            <label>Address of your newly created wallet</label>
                                             <input md-maxlength="42" md-minlength="40" name="adr" ng-model="account.adr" ethaddress />
                                             <div ng-messages="wallet2.adr.$error" role="alert" multiple ng-show="wallet2.adr.$dirty || wallet2.$submitted">
                                                 <div ng-message="ethaddress"> Please enter a valid Ethereum account address like 0x1234567890abcdef...</div>
@@ -166,10 +167,10 @@
                                 </div>
                                 <div ng-show="getDataField()!=''">
                                     Your DAO token will be created instantly. <br/> Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
-                                    <pre>{{daoAddress}}</pre> 
+                                    <pre>{{daoAddress}}</pre> <br/>
                                     The data you need to add is: <br/>
                                     <pre>{{ getDataField() }}</pre>
-                                    <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a> <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
+                                    <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a> <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
                                     </p>
                                 </div>
                             </div>
@@ -218,10 +219,10 @@
                             </div>
                             <div ng-show="getDataField()!=''">
                                 Your DAO tokens will be created instantly.
-                                <br/> Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
+                                <br/> Withdraw the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                                 <pre>{{daoAddress}}</pre> <br/> The data you need to add is: <br/>
                                 <pre>{{ getDataField() }}</pre>
-                                <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/><br/>After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>.<br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have completed your transfer.<br>
+                                  <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a> <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
                                 </p>
                             </div>
                         </div>
