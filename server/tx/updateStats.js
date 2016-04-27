@@ -15,4 +15,11 @@ var code = 'window.daoStats='+JSON.stringify(stats)+"\n" +
            '$(".dao-stat-total-eth-data").attr("data-perc",formatStats(window.daoStats.balance,"M"));\n';
 
 fs.writeFile(process.argv[2] ||  __dirname+"/../stats.js",code);
+fs.appendFile(process.argv[2] ||  __dirname+"/stats.csv",
+  new Date().toJSON()+";"+
+  stats.daysLeft+";"+
+  (stats.tokens*stats.units)+";"+
+  stats.price+";"+
+  stats.balance+"\n"
+);
 
