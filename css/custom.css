@@ -73,7 +73,7 @@ md-toolbar.checkBalance {
    z-index:2
 }
 
-ol{ margin-left: 0; padding-left: 30px; }
+ol{ margin-left: 0; padding-left: 5px; }
 
 ol li { padding-left: 10px;  font-size: 16px;    line-height: 34px;}
 
@@ -98,4 +98,16 @@ md-radio-button .md-ink-ripple {
 
 .info {
     font-size: 12px;
+}
+
+
+#dao_include p, #dao_include li, #dao_include ol, #dao_include ul {
+        font-size: 14px;
+        font-family: 'Open Sans', sans-serif;
+        color:black;
+}
+
+div.p {
+    padding-bottom:5px;
+    padding-top:5px;
 }
