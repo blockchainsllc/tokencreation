@@ -21,7 +21,6 @@ function execRequest($request_type, $path, $curl_post_data) {
    if ($request_type!='GET')
       curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curl_post_data));
    curl_setopt($ch, CURLOPT_HTTPHEADER, array('API_REQUEST_SIGNATURE:' . $hashInBase64, 'API_REQUEST_DATE:' . $nonce, 'API_PUBLIC_KEY:' . $publicKey,'Content-type:     application/json'));
-
    return curl_exec($ch);
 }
 
@@ -41,7 +40,7 @@ function createQuote($amount, $dao, $data ) {
 
 
 if (isset($data->txID))
-  $result = json_decode(execRequest("GET","Merchant/Payment", array()));
+  $result = json_decode(execRequest("GET","Merchant/Payment/".$data->txID, array()));
 else
   $result = createQuote($data->amount,$data->dao,$data->data);
 if (!$result) return;

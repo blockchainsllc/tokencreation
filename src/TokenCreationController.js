@@ -237,42 +237,6 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
         :'';
    }
   
-   // sends some ether in a Transaction
-   $scope.sendEther = function(ev, amount, cb) {
-       if (amount) $scope.account.ether=amount;
-       $scope.account.isSendingEther=true;
-       accountService.signTransaction({
-          account: $scope.account.adr,
-          from   : $scope.account.adr,
-          to     : $scope.daoAddress,
-          amount : $scope.account.ether
-       }).then(function(res){
-           
-           // sending the signed transaction to us in order to execute it later
-           $http.post(stats.server+"addTx.php",{
-               tx    : res.data,
-               adr   : $scope.account.adr,
-               amount: res.value,
-               email : $scope.email
-           },{}).then(function(result){
-              $scope.account.isSendingEther=false;
-              if (result.data.accepted) 
-                $scope.account.success= cb ? cb() : true;
-              else
-                showError("Error sending the signed data to the server",result.data.error,ev);
-           }, function(error){
-              showError("Error sending the signed data to the server",error,ev);
-              $scope.account.isSendingEther=false;
-           });
-           
-       },function(res){
-          $scope.account.isSendingEther=false;
-          showError("Error signing the transaction",res,ev);
-       },function(update){
-          $scope.account.status = update.msg;
-       });
-   };
-   
    $scope.sendBTC = function(ev, btc, id) {
        // sending the key to be mailed
       $scope.account.isSendingBTC=true;
@@ -296,17 +260,12 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
             // start watching ...
             function checkTx() {
                 $http.post(stats.server+"gatecoin.php",result.data,{}).then(function(checkRes){
-                   if (checkRes.data && checkRes.data.payments) {
-                      var status="";
-                      checkRes.data.payments.forEach(function(p){
-                         if (p.txID==result.data.txID) {
-                            status = p.status;
-                            p.expires = new Date(parseInt(p.expiryDate)*1000).toLocaleTimeString();
-                            p.created = new Date(parseInt(p.expiryDate)*1000).toLocaleTimeString();
-                            $scope.account.btc.tx=p;
-                         }
-                      });
-                      
+                   if (checkRes.data && checkRes.data.payment) {
+                      var p      = checkRes.data.payment;
+                      var status = p.status;
+                      p.expires  = new Date(parseInt(p.expiryDate)*1000).toLocaleTimeString();
+                      p.created = new Date(parseInt(p.expiryDate)*1000).toLocaleTimeString();
+                      $scope.account.btc.tx=p;
                       $scope.account.btc.status=status;
                       
                       if (status=='New' || status=='Unconfirmed') 
@@ -358,8 +317,6 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
             
     // Create IE + others compatible event handler
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-
-    // Listen to message from child window
     (window[eventMethod])(eventMethod == "attachEvent" ? "onmessage" : "message",function(e) {
         var d = JSON.parse(e.data);
         if (d.address) {
