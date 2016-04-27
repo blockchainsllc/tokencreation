@@ -15,7 +15,7 @@
             <div class="col-sm" style="text-align:center" ng-show="!acceptedTC">
                 <div id="msgOutput" />
                 <div>
-                    <md-button class="md-raised md-primary get-tokens-button" ng-click="acceptTC($event)">&nbsp;or Start Wizard&nbsp;</md-button>
+                    <md-button class="md-raised md-primary get-tokens-button" ng-click="acceptTC($event)">&nbsp;Start Wizard&nbsp;</md-button>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@
                 </md-toolbar>
                 <md-content class="md-padding content-border">
                     <p>
-                        In order to Create DAO tokens from ETH, you need an Ethereum account.
+                      In order to Create DAO tokens from ETH, you need an Ethereum account.
                     </p>
                     <form name="etheraccount" ng-submit="createAccount()">
                         <md-radio-group ng-model="account.existing">
@@ -122,7 +122,7 @@
                             <form>
                                 <md-radio-group ng-model="account.useExchange">
                                     <md-radio-button value="no">By sending ETH directly to the DAO from my wallet (Recommended)</md-radio-button>
-                                    <md-radio-button value="yes">I want to withdraw the ETH from an exchange supporting the DAO Creation with additional data</md-radio-button>
+                                    <md-radio-button value="yes">I want to create DAO Tokens by withdrawing ETH from an exchange</md-radio-button>
                                 </md-radio-group>
                             </form>
                         </div>
@@ -132,26 +132,26 @@
 
                     <!-- use the mist-browser -->
                     <div ng-show="account.existing=='yes_mist'">
-                        <p>Installing and setting up the Ethereum Wallet:</p>
+                        <p>Setting up the Ethereum Wallet:</p>
                         <ol>
-                            <li>Download a stable version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>; and for extra assistence, <a href="https://youtu.be/Y3JfLgjqNU4" target="_blank">this video can guide you through the installation process.</a> </li>
-                            <li>Unzip the file where you want to have program installed.</li>
-                            <li>Open the Ethereum-Wallet application file.</li>
+                            <li>Download a stable version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>; <a href="https://youtu.be/Y3JfLgjqNU4" target="_blank">this video</a>  can guide you through the installation process.</li>
+                            <li>Unzip the file wherever convenient.</li>
+                            <li>Open the 'Ethereum-Wallet' application file.</li>
                             <li>Follow the instructions to set up your new Ethereum Account. <br/>(It will likely take several hours to synchronize the blockchain).</li>
                             <li>Make a note of your Ethereum account address.</li>
-                            <li>Back up the Ethereum account you intend to use and load ETH onto that account. <a href="https://www.youtube.com/watch?v=CZ8ZCtbxD0M" target="_blank">This video</a> can guide you through the that process.
-                            </li>
-                            <li ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
+                            <li>Back up the Ethereum account you intend to use and load ETH onto that account. <a href="https://www.youtube.com/watch?v=CZ8ZCtbxD0M" target="_blank">This video</a> can guide you through the process.
+                            </li><br/>
+                            <div ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
                                 Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address:<br/>
                                 <pre>{{daoAddress}}</pre>
-                                <span style="color:red; ">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via your wallet.
-                            </li>
-                            <li ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
-                                After the first confirmation (20-40 seconds), you will be able to confirm your <a href="#balance">balance</a>. <br/> Voting on proposals will go live at the end of the Creation Phase. <br/><br/> You can safely close this page after your transfer is complete.<br>
-                            </li>
-                            <li ng-show="account.currencyType=='ETH' && account.useExchange=='yes'">
+                                <span style="color:red; ">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract from your wallet.<br/><br/>
+                            </div>
+                            <div ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
+                                After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully transferred your ETH.<br>
+                            </div>
+                            <div ng-show="account.currencyType=='ETH' && account.useExchange=='yes'">
                                 <p>
-                                    I understand that if I use an exchange that does not have an option to include Data with my withdrawal there is a chance I will not receive DAO tokens and I could lose the ETH I withdrew.<br><br> When withdrawing from an exchange directly to the DAO, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If you don't, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. Do not use an exchange that does not support sending data with your ETH withdrawal.
+                                   <strong>Important</strong> when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
                                 </p>
                                 <div>
                                     <form name="wallet2">
@@ -166,12 +166,13 @@
                                 </div>
                                 <div ng-show="getDataField()!=''">
                                     Your DAO token will be created instantly. <br/> Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
-                                    <pre>{{daoAddress}}</pre> <br/><br/> The data you need to add is: <br/>
+                                    <pre>{{daoAddress}}</pre> 
+                                    The data you need to add is: <br/>
                                     <pre>{{ getDataField() }}</pre>
-                                    <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/><br/> Voting on proposals will go live at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfuly withdrawn yur ETH.<br>
+                                    <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a> <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
                                     </p>
                                 </div>
-                            </li>
+                            </div>
                             <li ng-show="account.currencyType!='ETH' && account.currencyType!='FIAT'">Enter the address of your Ethereum account:
                                 <form name="wallet">
                                     <md-input-container style="margin-left:0px">
@@ -195,19 +196,19 @@
                                 <div ng-show="account.useExchange=='no'">
                                     Your DAO tokens will be created instantly. <br/> Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                                     <pre>{{daoAddress}}</pre> <br/>
-                                    <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via your wallet. <br/><br/> After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/>
-                                    <a href="voting.html" target="_new">Voting</a> on proposals will go live at the end of the Creation phase.<br/><br/> You can safely close this page after your transfer is complete.<br>
+                                    <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract from your wallet. <br/><br/> After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/>
+                                    <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase.<br/><br/> You can safely close this page after your transfer is complete.<br>
                                 </div>
                             </p>
                         </div>
                         <div ng-show="account.useExchange=='yes' && (account.existing!='yes_mist' || account.existing!='yes_wallet')">
                             <p>
-                                I understand that if I use an exchange that does not have an option to include Data with my withdrawal there is a chance I will not receive DAO tokens and I could lose the ETH I withdrew.<br><br> When withdrawing from an exchange directly to the DAO, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If you don't, your tokens will be owned by the wallet of the exchange and may lose both your ETH and your DAO tokens. Do not use an exchange that does not support sending data with your ETH withdrawal.
-                            </p>
+                               <strong>Important</strong> when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
+                             </p>
                             <div ng-show="account.existing=='yes' || account.existing=='yes_wallet' ">
                                 <form name="wallet2">
                                     <md-input-container style="margin-left:0px">
-                                        <label>Address of your wallet to register</label>
+                                        <label>The wallet address you want to create the Tokens for</label>
                                         <input md-maxlength="42" md-minlength="40" name="adr" ng-model="account.adr" ethaddress />
                                         <div ng-messages="wallet2.adr.$error" role="alert" multiple ng-show="wallet2.adr.$dirty || wallet2.$submitted">
                                             <div ng-message="ethaddress"> Please enter a valid Ethereum account address like 0x1234567890abcdef...</div>
@@ -218,9 +219,9 @@
                             <div ng-show="getDataField()!=''">
                                 Your DAO tokens will be created instantly.
                                 <br/> Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
-                                <pre>{{daoAddress}}</pre> <br/><br/> The data you need to add is: <br/>
+                                <pre>{{daoAddress}}</pre> <br/> The data you need to add is: <br/>
                                 <pre>{{ getDataField() }}</pre>
-                                <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/><br/> Voting on proposals will go live at the end of the Creation phase. <br/><br/> You can safely close this page after you have completed your transfer.<br>
+                                <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/><br/>After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>.<br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have completed your transfer.<br>
                                 </p>
                             </div>
                         </div>
@@ -307,7 +308,7 @@
                         <p style="font-size: 14px;">
                             Thanks to ShapeShift.io, you can Create DAO tokens with almost any digital currency.<br/> You will also benefit from higher limits using this tool than using ShapeShift directly.<br/> Once you click the button below, a ShapeShift window will open, where you will be able to conduct the transaction.<br/><br/>
                             <md-button ng-click="openShapeShift()"><img src="https://shapeshift.io/images/shifty/small_light_altcoins.png" class="ss-button"></md-button><br/><br/>
-                            <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as ShapeShift will be sending ETH directly to the DAO contract on your behalf. <br/><br/> After ShapeShift transfers the funds to the DAO, you will be able to confirm your <a href="#balance">balance</a> for account {{account.adr}}</a> . <br/> Voting on proposals will go live at the end of the Creation phase. <br/><br/> You can safely close this page once your ShapeShift transfer is complete.<br/>
+                            <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as ShapeShift will be sending ETH directly to the DAO contract on your behalf. <br/><br/> After ShapeShift transfers the funds to the DAO, you will be able to confirm your <a href="./creation.html">balance</a> for account {{account.adr}}</a> . <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page once your ShapeShift transfer is complete.<br/>
                             <div>
                             </div>
                         </p>
@@ -334,7 +335,7 @@
                         </p>
                         <p>
                             Once the ETH is received, the transaction signed above will execute. If you have specified an email in the step above, you will receive an email with the confirmation that your <b>{{account.ether}}</b> ETH have been sent to the DAO.
-                            <br/><br/> After the first confirmation (20-40 seconds), you will be able to confirm your <a href="#balance">balance</a>. <br/> Voting on proposals will go live at the end of the Creation phase. <br/><br/>
+                            <br/><br/> After the first confirmation (20-40 seconds), you will be able to confirm your <a href="./creation.html">balance</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/>
                         </p>
                     </p>
                 </md-content>
@@ -344,7 +345,7 @@
 
 
 
-            
+
             <!-- 3. FIAT register at Bity -->
             <div ng-show="account.currencyType=='FIAT' && account.existing && (account.existing!='no' || account.adr)" class="roundBorder">
                 <md-toolbar>
