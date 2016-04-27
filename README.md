@@ -69,13 +69,13 @@ Also if you want to support for IE8-11 you should add this meta-tag in your head
     npm install
     ```
     
-* now active a cronjob, which is used to handle all incoming requests and also updateing the statistics.
+* now active a cronjob, which is used to handle all incoming requests and also updating the statistics.
 
     ```shell
     crontab -e
     ```
     
-   The lines you should add ther should look like this:
+   The lines to add there should look something like this:
    
    ```shell
     0 * * * * /usr/bin/nodejs {PATHTOSITE}/tokencreation/server/tx/updateStats.js /var/log/updatestats 2>&1
