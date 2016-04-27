@@ -71,7 +71,7 @@
                 </md-toolbar>
                 <md-content class="md-padding content-border">
                     <p>
-                        In order to Create DAO tokens from ETH, you need an Ethereum account.
+                      In order to Create DAO tokens from ETH, you need an Ethereum account.
                     </p>
                     <form name="etheraccount" ng-submit="createAccount()">
                         <md-radio-group ng-model="account.existing">
@@ -132,23 +132,23 @@
 
                     <!-- use the mist-browser -->
                     <div ng-show="account.existing=='yes_mist'">
-                        <p>Installing and setting up the Ethereum Wallet:</p>
+                        <p>Setting up the Ethereum Wallet:</p>
                         <ol>
-                            <li>Download a stable version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>; and for extra assistence, <a href="https://youtu.be/Y3JfLgjqNU4" target="_blank">this video can guide you through the installation process.</a> </li>
-                            <li>Unzip the file where you want to have program installed.</li>
-                            <li>Open the Ethereum-Wallet application file.</li>
+                            <li>Download a stable version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>; <a href="https://youtu.be/Y3JfLgjqNU4" target="_blank">this video</a>  can guide you through the installation process.</li>
+                            <li>Unzip the file wherever convenient.</li>
+                            <li>Open the 'Ethereum-Wallet' application file.</li>
                             <li>Follow the instructions to set up your new Ethereum Account. <br/>(It will likely take several hours to synchronize the blockchain).</li>
                             <li>Make a note of your Ethereum account address.</li>
-                            <li>Back up the Ethereum account you intend to use and load ETH onto that account. <a href="https://www.youtube.com/watch?v=CZ8ZCtbxD0M" target="_blank">This video</a> can guide you through the that process.
-                            </li>
-                            <li ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
+                            <li>Back up the Ethereum account you intend to use and load ETH onto that account. <a href="https://www.youtube.com/watch?v=CZ8ZCtbxD0M" target="_blank">This video</a> can guide you through the process.
+                            </li><br/>
+                            <div ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
                                 Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address:<br/>
                                 <pre>{{daoAddress}}</pre>
-                                <span style="color:red; ">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract from your wallet.
-                            </li>
-                            <li ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
-                                After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. 
-                            </li>
+                                <span style="color:red; ">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract from your wallet.<br/><br/>
+                            </div>
+                            <div ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
+                                After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully transferred your ETH.<br>
+                            </div>
                             <li ng-show="account.currencyType=='ETH' && account.useExchange=='yes'">
                                 <p>
                                    <strong>Important</strong> when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
@@ -168,7 +168,7 @@
                                     Your DAO token will be created instantly. <br/> Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                                     <pre>{{daoAddress}}</pre> <br/> The data you need to add is: <br/>
                                     <pre>{{ getDataField() }}</pre>
-                                    <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/><br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH.<br>
+                                    <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH.<br>
                                     </p>
                                 </div>
                             </li>

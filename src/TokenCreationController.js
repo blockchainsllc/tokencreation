@@ -70,7 +70,7 @@ function isValidAddress(adr) {
 // create a link to MistBrowser dependend OS
 function detectMistLink() {
    var ua = navigator.platform, baseUrl='https://github.com/ethereum/mist/releases';
-   var version='0.5.2';
+   var version='0.7.2';
    
    function createLink(os) { return baseUrl+'/download/'+version+"/Ethereum-Wallet-"+os+"-"+version.replace(/\./g,'-')+".zip"; }
    
