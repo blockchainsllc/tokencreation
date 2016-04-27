@@ -132,7 +132,7 @@
 
                     <!-- use the mist-browser -->
                     <div ng-show="account.existing=='yes_mist'">
-                        <p>Setting up the Ethereum Wallet:</p>
+                        <p class="mb5 pt20">Setting up the Ethereum Wallet:</p>
                         <ol>
                             <li>Download a stable version of the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a>; <a href="https://youtu.be/Y3JfLgjqNU4" target="_blank">this video</a>  can guide you through the installation process.</li>
                             <li>Unzip the file wherever convenient.</li>
@@ -143,8 +143,8 @@
                             </li><br/>
                         </ol>
                         <div ng-show="account.currencyType=='ETH' && account.useExchange=='no'" class="p">
-                            Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address:<br/>
-                            <pre>{{daoAddress}}</pre>
+                            Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address:<br/><br/>
+                            <pre>{{daoAddress}}</pre> <br/>
                             <span style="color:red; ">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract from your wallet.<br/><br/>
                         </div>
                         <div ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
@@ -152,13 +152,13 @@
                         </div>
                         <div ng-show="account.currencyType=='ETH' && account.useExchange=='yes'">
                             <p>You can use the 'withdraw' function of your exchange to send ETH to the DAO, which in turn will associate the Token to the wallet address you specify below.</p>
-                            <p>
-                                <strong>Important</strong> when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
+                             <p class="mb0">
+                                <strong>Important</strong>: when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
                             </p>
                             <div>
                                 <form name="wallet2">
                                     <md-input-container style="margin-left:0px">
-                                        <label>Address of your newly created wallet</label>
+                                        <label>Address of the newly created wallet</label>
                                         <input md-maxlength="42" md-minlength="40" name="adr" ng-model="account.adr" ethaddress />
                                         <div ng-messages="wallet2.adr.$error" role="alert" multiple ng-show="wallet2.adr.$dirty || wallet2.$submitted">
                                             <div ng-message="ethaddress"> Please enter a valid Ethereum account address like 0x1234567890abcdef...</div>
@@ -171,7 +171,7 @@
                                 <pre>{{daoAddress}}</pre> <br/>
                                 The data you need to add is: <br/>
                                 <pre>{{ getDataField() }}</pre>
-                                <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a> <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
+                                <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
                                 </p>
                             </div>
                         </div>
@@ -197,12 +197,12 @@
                                 <div ng-show="account.useExchange=='no'">
                                     
                                     <div ng-show="account.existing=='yes_wallet'">
-                                        In order to send Ether from your new Wallet to the DAO, you must first transfer enough Ether to your new Account. Once you have done this, you may either install the  <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a> 
-                                        or simply go to <a href="https://www.myetherwallet.com/#send-transaction" target="_new">MyEtherWallet</a> and use your downloaded key to send the transaction.  
+                                        In order to send Ether from your new wallet to the DAO, you must first transfer enough ETH to your new account. Once you have done this, you can either install the  <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a> 
+                                        or simply go to <a href="https://www.myetherwallet.com/#send-transaction" target="_new">MyEtherWallet</a> and use your downloaded key to send the transaction.<br/><br/> 
                                     </div>
                                     
                                     
-                                    Your DAO tokens will be created instantly. <br/> Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
+                                    Your DAO tokens will be created instantly. <br/> <br/> Send the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                                     <pre>{{daoAddress}}</pre> <br/>
                                     <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract from your wallet. <br/><br/> After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/>
                                     <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase.<br/><br/> You can safely close this page after your transfer is complete.<br>
@@ -210,13 +210,13 @@
                             </p>
                         </div>
                         <div ng-show="account.useExchange=='yes' && account.existing!='yes_mist' ">
-                            <p>
-                               <strong>Important</strong> when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
+                            <p class="mb0">
+                               <strong>Important</strong>: when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
                              </p>
                             <div ng-show="account.existing=='yes' || account.existing=='yes_wallet' ">
                                 <form name="wallet2">
                                     <md-input-container style="margin-left:0px">
-                                        <label>The wallet address you want to create the Tokens for</label>
+                                        <label>The address of the wallet that will be used to hold the DAO tokens</label>
                                         <input md-maxlength="42" md-minlength="40" name="adr" ng-model="account.adr" ethaddress />
                                         <div ng-messages="wallet2.adr.$error" role="alert" multiple ng-show="wallet2.adr.$dirty || wallet2.$submitted">
                                             <div ng-message="ethaddress"> Please enter a valid Ethereum account address like 0x1234567890abcdef...</div>
@@ -226,10 +226,10 @@
                             </div>
                             <div ng-show="getDataField()!=''">
                                 Your DAO tokens will be created instantly.
-                                <br/> Withdraw the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
+                                <br/><br/> Withdraw the amount of ETH you want to use to Create DAO tokens to the following DAO contract address: <br/><br/>
                                 <pre>{{daoAddress}}</pre> <br/> The data you need to add is: <br/>
                                 <pre>{{ getDataField() }}</pre>
-                                  <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a> <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
+                                  <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
                                 </p>
                             </div>
                         </div>
