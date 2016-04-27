@@ -201,7 +201,7 @@
                                 </div>
                             </p>
                         </div>
-                        <div ng-show="account.useExchange=='yes' && (account.existing!='yes_mist' || account.existing!='yes_wallet')">
+                        <div ng-show="account.useExchange=='yes' && account.existing!='yes_mist' ">
                             <p>
                                <strong>Important</strong> when withdrawing from an exchange directly to the DAO's address in order to create DAO Tokens, you <b style="color:red">MUST</b> add data to the withdrawal, so the DAO can register your wallet. If your exchange doesn't allow that data to be sent, or if you do not include this data, your tokens will be owned by the exchange and you may lose both your ETH and your DAO tokens. <strong>Do not use an exchange that does not support sending data with your ETH withdrawal.</strong>
                              </p>
