@@ -70,7 +70,7 @@ function isValidAddress(adr) {
 // create a link to MistBrowser dependend OS
 function detectMistLink() {
    var ua = navigator.platform, baseUrl='https://github.com/ethereum/mist/releases';
-   var version='0.5.2';
+   var version='0.7.2';
    
    function createLink(os) { return baseUrl+'/download/'+version+"/Ethereum-Wallet-"+os+"-"+version.replace(/\./g,'-')+".zip"; }
    
@@ -356,6 +356,18 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
       $scope.shapePopup.focus();
    };
             
+    // Create IE + others compatible event handler
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+
+    // Listen to message from child window
+    (window[eventMethod])(eventMethod == "attachEvent" ? "onmessage" : "message",function(e) {
+        var d = JSON.parse(e.data);
+        if (d.address) {
+            $scope.account.adr = d.address;
+            $scope.$apply();
+        }
+    },false);
+
             
 }
 
