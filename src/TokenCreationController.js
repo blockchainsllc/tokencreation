@@ -339,7 +339,7 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
    $scope.needsAccount = function() {  return $scope.acceptedTC && $scope.account.currencyType; };
    
    $scope.showBuy   = function() {  
-      if ($scope.account.currencyType=='FIAT' && $scope.account.existing!='yes_mist' && $scope.account.existing!='yes_wallet') return false;
+      if ($scope.account.currencyType=='FIAT' && $scope.account.existing!='yes_mist' ) return false;
       return $scope.needsAccount() &&  $scope.account.existing && (
             ($scope.account.currencyType=='ETH' || 
                ( isValidAddress($scope.account.adr) || $scope.account.existing=='yes_mist'))
