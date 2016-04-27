@@ -21,16 +21,26 @@ function configure() {
   tx.daoContract = web3.eth.contract(daoabi).at(tx.dao);
 }
 
+function fill(val,num) {
+  var f = ""+val;
+  while (f.length<(num || 2)) f="0"+f;
+  return f;
+}
 
+function formatDate(d) {
+  var s = d.toGMTString().split(" ");
+  return s[1]+" "+s[2]+" "+s[4].substring(0,5)+" GMT";
+}
 
 function getStats() {
    if (!tx.web3) configure();
    var end = web3.toBigNumber(tx.daoContract.closingTime()).toNumber();
+   
    return {
       balance    : web3.toBigNumber(web3.fromWei(web3.eth.getBalance(tx.dao),"ether")).toFormat(2),
       price      : web3.toBigNumber( web3.toBigNumber(tx.daoContract.divisor()).toNumber() / 20).toFormat(2),
       daysLeft   : parseInt ((web3.toBigNumber(tx.daoContract.closingTime()).toNumber()- Date.now()/1000)/(3600*24)),
-      end        : new Date(end*1000).toUTCString(),
+      end        : formatDate(new Date(end*1000)),
       tokens     : web3.toBigNumber(web3.fromWei(tx.daoContract.totalSupply(),"ether")).toFormat(2),
       dao        : tx.dao,
       units      : 100,
