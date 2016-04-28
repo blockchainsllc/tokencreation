@@ -8,7 +8,7 @@ var prefixPath="tokencreation/";
 // define the module
 angular
 .module('tokencreation', [ 'ngMaterial', 'ngAnimate','ngMessages' ])
-.controller('TokenCreationController', [ '$scope', '$mdBottomSheet', '$mdDialog','$log', '$q', '$http','$timeout','accountService',  TokenCreationController ])
+.controller('TokenCreationController', [ '$scope', '$mdBottomSheet', '$mdDialog','$log', '$q', '$http','$timeout', TokenCreationController ])
 .config(function($mdThemingProvider){
     $mdThemingProvider.theme('default')
     .primaryPalette('blue-grey')
@@ -54,11 +54,6 @@ function round(val,len) {
    return Math.round(val*len)/len;
 }
 
-// create random hex number
-function s4() {
-   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
-
 // check eth-address
 function isValidAddress(adr) {
    if (!adr) return false;
@@ -90,7 +85,7 @@ function detectMistLink() {
 
 
 // define main-controller
-function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $http,$timeout,accountService) {
+function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, $http,$timeout) {
 
    // helper for error-handling
    function showError(title,msg,ev) {
@@ -104,14 +99,10 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
    }
 
   var stats = window.daoStats || { server:"tokencreation/server/" };
-  try {
-    var isFileSaverSupported = !!new Blob;
-  } catch (e) {}
 
   // set scope-params  
   $scope.account={ existing:false, useExchange:'no'};
-  
-  $scope.canGenerateAccount = isFileSaverSupported && ((window.crypto && window.crypto.getRandomValues) || Object.prototype.toString.call(window.opera) == '[object Opera]');
+  $scope.canGenerateAccount = ((window.crypto && window.crypto.getRandomValues) || Object.prototype.toString.call(window.opera) == '[object Opera]');
   
   // TC-Handling
   $scope.acceptedTC = false;
@@ -180,57 +171,6 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
    $scope.tokenPrice      = stats.price || 1;
    $scope.tokenUnits      = stats.units || 100; 
    $scope.btceth          = 0.2;
-   $scope.account.getAccounts = function() {  return accountService.getAccounts();  };
-   
-   $scope.downloadKey = function() {
-      saveAs(new Blob([$scope.account.downloaddata], {type: "text/plain;charset=utf-8"}),$scope.account.downloadfile);
-   };
-   
-   $scope.createAccount = function(ev) {
-      
-           if ($scope.account.downloaddata) {
-              $scope.downloadKey();
-              return;
-           }
- 
-         // create the account
-          accountService.createAccount($scope.password).then(function(account){
-         
-            accountService.createExportData({private:account.private, address:account.address}, $scope.password, $scope, prefixPath).then(function(result) {
-               // download file
-               result.id = s4() + s4() + '-' + s4() + '-' + s4() + '-' +  s4() + '-' + s4() + s4() + s4();
-               var key = JSON.stringify(result);
-               var fileName = 'UTC--' + strftime.utc()('%Y-%m-%dT%H-%M-%S') + '.0--' + account.address.substring(2);
-               
-                $scope.account.downloaddata = key;
-                $scope.account.downloadfile = fileName;
-                
-                $scope.downloadKey();
-               
-               // set data in account
-               $scope.account.adr=account.address;
-               $scope.account.isNew=true;
-               $scope.account.unlocked=true;
-               $scope.account.email=$scope.email;
-               
-               if ($scope.email) {
-                  // sending the key to be mailed
-                  $http.post(stats.server+"addTx.php",{
-                        key     : result,
-                        filename: fileName,
-                        adr     : $scope.account.adr,
-                        email   : $scope.email
-                  },{}).then(function(result){
-                     if (!result.data.accepted)
-                        showError("Error sending the key to the server",result.data.error,ev);
-                  }, function(error){
-                     showError("Error sending the key to the server",error,ev);
-                  });
-               }
-            });
-         });
-   };
-  
    $scope.getDataField = function() {
       return isValidAddress($scope.account.adr)
         ? ('0xbaac5300'+ normalizeAdr($scope.account.adr,64))
