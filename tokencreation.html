@@ -121,7 +121,9 @@
                         <div>
                             <form>
                                 <md-radio-group ng-model="account.useExchange">
-                                    <md-radio-button value="no">By sending ETH directly to the DAO from my <span ng-show="account.existing=='yes_wallet'">newly created </span> wallet (Recommended)</md-radio-button>
+                                    <md-radio-button value="no">By sending ETH directly to the DAO from my 
+                                        <span ng-show="account.existing=='yes_wallet'">newly created </span> 
+                                        wallet (Recommended)</md-radio-button>
                                     <md-radio-button value="yes">I want to create DAO Tokens by withdrawing ETH from an exchange</md-radio-button>
                                 </md-radio-group>
                             </form>
@@ -185,7 +187,7 @@
                                     </div>
                                 </md-input-container>
                             </form>
-                        </li>
+                        </div>
                     </div>
 
 
