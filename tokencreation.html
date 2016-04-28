@@ -49,7 +49,7 @@
                                     Select to use any digital currencies supported by ShapeShift.
                                 </div class="info">
                             </md-radio-button>
-                            <md-radio-button value="FIAT"><b>USD, EUR or CHF or Exchanges</b> (Uses Bity, Bittrex or Gatecoin)
+                            <md-radio-button value="FIAT"><b>USD, EUR, HKD or CHF or Exchanges</b> (Uses Bity, Bittrex or Gatecoin)
                                 <div class="info">
                                     Select to use national currencies, or if you would prefer to hold your DAO tokens on an exchange.
                                 </div>
@@ -316,7 +316,7 @@
                     <!-- Pay in BTC -->
                     <div ng-show="account.currencyType=='COINS' && account.adr">
                         <p style="font-size: 14px;">
-                            Thanks to ShapeShift.io, you can Create DAO tokens with almost any digital currency.<br/> You will also benefit from higher limits using this tool than using ShapeShift directly.<br/> Once you click the button below, a ShapeShift window will open, where you will be able to conduct the transaction.<br/><br/>
+                            Thanks to ShapeShift.io, you can Create DAO tokens with almost any digital currency.<br/> You will also benefit from higher limits using this tool than using ShapeShift directly.<br/> Once you click the button below, a ShapeShift window will open, where you will be able to conduct the transaction. We recommend you leave the "Amount ETH" box EMPTY as it often creates complications.<br/><br/>
                             <md-button ng-click="openShapeShift()"><img src="https://shapeshift.io/images/shifty/small_light_altcoins.png" class="ss-button"></md-button><br/><br/>
                             <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as ShapeShift will be sending ETH directly to the DAO contract on your behalf. <br/><br/> After ShapeShift transfers the funds to the DAO, you will be able to confirm your <a href="./creation.html">balance</a> for account {{account.adr}}</a> . <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page once your ShapeShift transfer is complete.<br/>
                             <div>
@@ -371,9 +371,9 @@
                         </p>
                         <p>
                             <ol>
-                                <li><a href="https://bittrex.com/Account/Register" target="_new">Bittrex (Global support, including New York residents)</a><br/> On Bittrex you will have to create a new account or sign in as a returning user before you are be able to Create DAO tokens. The DAO Tokens you created will be stored directly on the exchange. In order to use your DAO Tokens to vote or participate in the inner workings of The DAO in any way, you will have to install the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a> and eventually withdraw your DAO tokens to your Ethereum Wallet account.<br>
+                                <li><a href="https://bittrex.com/Account/Register" target="_new">Bittrex (Global support, including New York residents)</a><br/> With Bittrex, you can Create DAO tokens with ETH directly on their exchange. You will have to create a new account or sign in as a returning user before you are be able to Create DAO tokens. The DAO Tokens you created will be stored directly on the exchange. In order to use your DAO Tokens to vote or participate in the inner workings of The DAO in any way, you will have to install the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a> and eventually withdraw your DAO tokens to your Ethereum Wallet account.<br>
                                 </li>
-                                <li><a href="https://gatecoin.com/" target="_new">Gatecoin (Supports some US Residents)</a><br/> On Gatecoin you will have to create a new account or sign in as a returning user before you are be able to Create DAO tokens. The DAO Tokens you created will be stored directly on the exchange. In order to use your DAO Tokens to vote or participate in the inner workings of The DAO in any way, you will have to install the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a> and eventually withdraw your DAO tokens to your Ethereum Wallet account. 
+                                <li><a href="https://gatecoin.com/" target="_new">Gatecoin (Supports some US Residents)</a><br/> With Gatecoin, you can Create DAO tokens with BTC, USD, HKD or EUR directly on their exchange. You will have to create a new account or sign in as a returning user before you are be able to Create DAO tokens. The DAO Tokens you created will be stored directly on the exchange. In order to use your DAO Tokens to vote or participate in the inner workings of The DAO in any way, you will have to install the <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a> and eventually withdraw your DAO tokens to your Ethereum Wallet account. 
                                 </li>
                             </ol>
                         </p>
