@@ -194,25 +194,7 @@
                     <!-- Pay in ETH -->
                     <div ng-show="account.currencyType=='ETH'">
                         <!--do it directly -->
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <md-button class="md-raised" ng-click="plannedEth_show=!plannedEth_show">Calculate Tokens</md-button>                                
-                            </div>
-                            <div class="col-md-8 tokencalculator" ng-show="plannedEth_show">
-                                <md-input-container class="col-md-4">
-                                    <label>ETH</label>
-                                    <input type="number" step="any" min="0" max="1000000" name="plannedETH" id="account_plannedETH" ng-model="account.plannedETH" />
-                                </md-input-container>
-                                
-                                <div style="padding-top:30px"> 
-                                     &nbsp; = {{( account.plannedETH ||0  )/tokenPrice*tokenUnits | number:2}} DAO tokens
-                                </div>
-                                     
-                                
-                            </div>
-                        
-                        </div>
-                        
+                       
                         
                         <div ng-show="account.existing=='yes' || account.existing=='yes_wallet'">
                             <p>
@@ -255,6 +237,35 @@
                                 </p>
                             </div>
                         </div>
+
+    
+                        <div class="row">
+                          <div class="col-md-12" >
+                            <p class="alpha5"><br/>Note sure how many tokens you will receive? You can use this informal calculator if you'd like: 
+                          </div>
+                        </div>
+
+                         <div class="row">
+                            <div class="col-md-4" >
+                                <md-button class="md-raised" ng-click="plannedEth_show=!plannedEth_show">Calculate Tokens</md-button>                                
+                            </div>
+                            <div class="col-md-8 tokencalculator" ng-show="plannedEth_show">
+                                <md-input-container class="col-md-4">
+                                    <label>ETH</label>
+                                    <input type="number" step="any" min="0" max="1000000" name="plannedETH" id="account_plannedETH" ng-model="account.plannedETH" />
+                                </md-input-container>
+                                
+                                <div style="padding-top:30px"> 
+                                     &nbsp; = {{( account.plannedETH ||0  )/tokenPrice*tokenUnits | number:2}} DAO tokens
+                                </div>
+                                     
+                                
+                            </div>
+                        
+                        </div>
+                        
+
+
                     </div>
 
 
