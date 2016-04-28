@@ -150,7 +150,7 @@
                             <span style="color:red; ">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract from your wallet.<br/><br/>
                         </div>
                         <div ng-show="account.currencyType=='ETH' && account.useExchange=='no'">
-                            After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully transferred your ETH.<br>
+                            After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully transferred your ETH.<br>All support requests should be made in the support category of our <a href="https://forum.daohub.org/c/theDAO/support" target="_new">forum</a>.
                         </div>
                         <div ng-show="account.currencyType=='ETH' && account.useExchange=='yes'">
                             <p>You can use the 'withdraw' function of your exchange to send ETH to the DAO, which in turn will associate the Token to the wallet address you specify below.</p>
@@ -173,7 +173,7 @@
                                 <pre>{{daoAddress}}</pre> <br/>
                                 The data you need to add is: <br/>
                                 <pre>{{ getDataField() }}</pre>
-                                <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
+                                <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>All support requests should be made in the support category of our <a href="https://forum.daohub.org/c/theDAO/support" target="_new">forum</a>.
                                 </p>
                             </div>
                         </div>
@@ -209,7 +209,7 @@
                                     Your DAO tokens will be created instantly. <br/> <br/> Send the amount of ETH you want to use to create DAO tokens to the following DAO contract address: <br/><br/>
                                     <pre>{{daoAddress}}</pre> <br/>
                                     <span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract from your wallet. <br/><br/> After the first confirmation (20-40 seconds), you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/>
-                                    <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase.<br/><br/> You can safely close this page after your transfer is complete.<br>
+                                    <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase.<br/><br/> You can safely close this page after your transfer is complete.<br>All support requests should be made in the support category of our <a href="https://forum.daohub.org/c/theDAO/support" target="_new">forum</a>.
                                 </div>
                             </p>
                         </div>
@@ -233,7 +233,7 @@
                                 <br/><br/> Withdraw the amount of ETH you want to use to create DAO tokens to the following DAO contract address: <br/><br/>
                                 <pre>{{daoAddress}}</pre> <br/> The data you need to add is: <br/>
                                 <pre>{{ getDataField() }}</pre>
-                                  <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>
+                                  <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page after you have successfully withdrawn your ETH to the DAO.<br>All support requests should be made in the support category of our <a href="https://forum.daohub.org/c/theDAO/support" target="_new">forum</a>.
                                 </p>
                             </div>
                         </div>
@@ -329,7 +329,7 @@
                                 <div style="padding-top:40px">
                                     <div ng-show="account.btc.status && account.btc.status=='Paid'">
                                         <b>You have successfully created {{(( account.btc_amount ||0) / btceth )/tokenPrice*tokenUnits | number:2}} DAO tokens.</b>
-                                         <br/><br/>You will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can now safely close this page.<br>
+                                         <br/><br/>You will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can now safely close this page.<br>All support requests should be made in the support category of our <a href="https://forum.daohub.org/c/theDAO/support" target="_new">forum</a>.
                                         
                                     </div>
                                     <div ng-show="account.btc.status && account.btc.status=='Underpaid'">
@@ -430,7 +430,7 @@
                             <p style="font-size:12px; padding-top:15px">
                                 (*) Please note that to convert more than 250 EUR, USD or CHF you will have to verify your identity with Bity.
                             </p>
-                             <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page.<br>
+                             <p><span style="color:red; font-size: 14px;">Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as you are sending ETH directly to the DAO contract via an exchange. <br/> <br/> After the exchange has sent the ETH, you will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/><a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page.<br>All support requests should be made in the support category of our <a href="https://forum.daohub.org/c/theDAO/support" target="_new">forum</a>.
                         </p>
                     </div>
                 </md-content>
