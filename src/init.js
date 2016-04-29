@@ -15,7 +15,7 @@
         'https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic',
         prefix + 'bower_components/angular-material/angular-material.css',
         prefix + 'css/bootstrap.min.css',
-        prefix + 'css/theme-aquatica.css',
+//        prefix + 'css/theme-aquatica.css',
         prefix + 'css/custom.css'
     ].forEach(function(path) {
         if (addBootStrap || path.indexOf('bootstrap')<0)    document.write('\x3Clink rel="stylesheet" href="'+path+'"/>');
