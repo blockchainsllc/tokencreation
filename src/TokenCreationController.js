@@ -122,7 +122,7 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
                '    </md-button>';
          
          if (parentScope.isMobile) 
-            txt='<div style="color:red;font-weight:bold">You are using a mobile device. We strongly encourage you to create the tokens on a desktop pc</div>' + txt;
+            txt='<div style="color:red;font-weight:bold">You are using a mobile device. We strongly encourage you to create the tokens on a desktop.</div>' + txt;
          
          if (navigator.userAgent.indexOf("iPhone")>=0) {
            txt = txt +' <div style="text-align: right; padding-bottom:300px">' + buttons + '</div>';

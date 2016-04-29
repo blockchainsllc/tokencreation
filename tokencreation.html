@@ -78,13 +78,13 @@
                             <md-radio-button value="yes">I already have an Ethereum wallet, and I know how to use it </md-radio-button>
                             <md-radio-button value="yes_mist"  ng-disabled="isMobile">I would like instructions on how to install the Ethereum Wallet.</md-radio-button>
                             <md-radio-button value="yes_wallet" ng-disabled="!canGenerateAccount || isMobile">I want to create a new Ethereum account here in the browser, to import later in any wallet.
-                                <div ng-show="!canGenerateAccount">You are using a browser, which is not safe to generate your Account here, so either switch to Firefox or Chrome or simply install the Ethereum Wallet!</div>
+                                <div ng-show="!canGenerateAccount">The browser you are using does not support the security functions required to generate a wallet. Please upgrade to the latest Firefox or Chrome or simply install the Ethereum Wallet.</div>
                             </md-radio-button>
                             <md-radio-button value="exchange" ng-show="account.currencyType=='FIAT'">I want to create and store DAO tokens on an exchange.</md-radio-button>
                         </md-radio-group>
                         
                         <div ng-show="isMobile">
-                            You seem to use a mobile device, that is why the options to create a account are disabled.
+                            You seem to use a mobile device, some options were disabled.
                         </div>
                         
                         <div ng-show="(account.existing=='yes' || account.existing=='yes_wallet') && account.currencyType!='ETH' && account.currencyType!='FIAT'">
