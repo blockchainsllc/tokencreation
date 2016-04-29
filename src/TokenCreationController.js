@@ -109,6 +109,9 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
   $scope.acceptTC = function(ev) {
       $http.get( stats.toc.url ||  prefixPath+"md/tc.md.txt").then(function(response) {
          var parentScope=$scope;
+         parentScope.isMobile =$( window ).width()<700;
+          
+
          var txt = stats.toc.selector ? $(stats.toc.selector,response.data).html() : marked(response.data);
          var buttons =  '<md-button ng-click="closeDialog()" class="md-primary">' +
                '      Close' +
@@ -118,7 +121,7 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
                '      I Accept' +
                '    </md-button>';
          
-         if ($( window ).width()<700) 
+         if (parentScope.isMobile) 
             txt='<div style="color:red;font-weight:bold">You are using a mobile device. We strongly encourage you to create the tokens on a desktop pc</div>' + txt;
          
          if (navigator.userAgent.indexOf("iPhone")>=0) {
