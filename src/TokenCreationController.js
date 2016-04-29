@@ -110,22 +110,33 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
       $http.get( stats.toc.url ||  prefixPath+"md/tc.md.txt").then(function(response) {
          var parentScope=$scope;
          var txt = stats.toc.selector ? $(stats.toc.selector,response.data).html() : marked(response.data);
+         var buttons =  '<md-button ng-click="closeDialog()" class="md-primary">' +
+               '      Close' +
+               '    </md-button>' +
+               '    <md-button ng-click="acceptDialog()" class="md-primary" ng-disabled="!scrolled">' +
+               '       <md-tooltip md-visible="!scrolled">You must read the T&Cs to the end in order to accept them.</md-tooltip> ' +
+               '      I Accept' +
+               '    </md-button>';
+         
+         if ($( window ).width()<700) 
+            txt='<div style="color:red;font-weight:bold">You are using a mobile device. We strongly encourage you to create the tokens on a desktop pc</div>' + txt;
+         
+         if (navigator.userAgent.indexOf("iPhone")>=0) {
+           txt = txt +' <div style="text-align: right; padding-bottom:300px">' + buttons + '</div>';
+           buttons = "";
+         }
+         else
+           buttons =  '  <md-dialog-actions style="text-align: right">' + buttons + '</md-dialog-actions>';
+         
          $mdDialog.show({
             parent:      angular.element(document.body),
             targetEvent: ev,
             template:
                '<md-dialog aria-label="Explanation of Terms and Disclaimer" ng-cloak >' +
                '  <md-toolbar><div class="md-toolbar-tools"><h2>Explanation of Terms and Disclaimer</h2></div></md-toolbar>'+
-               '  <md-dialog-content class="tocContent" data-ng-init="init()" style="order:0;-webkit-order:0;-ms-flex-order:0"><div style="padding:10px">'+ txt +'</div></md-dialog-content>' +
-               '  <md-dialog-actions style="text-align: right">' +
-               '    <md-button ng-click="closeDialog()" class="md-primary">' +
-               '      Close' +
-               '    </md-button>' +
-               '    <md-button ng-click="acceptDialog()" class="md-primary" ng-disabled="!scrolled">' +
-               '       <md-tooltip md-visible="!scrolled">You must read the T&Cs to the end in order to accept them.</md-tooltip> ' +
-               '      I Accept' +
-               '    </md-button>' +
-               '  </md-dialog-actions>' +
+               '  <md-dialog-content class="tocContent" data-ng-init="init()" style="overflow:auto;order:0;-webkit-order:0;-ms-flex-order:0"><div style="padding:10px">'+ txt +
+               '</div></md-dialog-content>' +
+               buttons +
                '</md-dialog>',
             controller: function ToCController($scope, $mdDialog) {
                $scope.closeDialog  = function() {   $mdDialog.hide();     }
