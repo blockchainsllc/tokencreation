@@ -2727,13 +2727,6 @@ footer.short-2 .contact-action:hover {
   .utility-menu {
     display: none;
   }
-  nav {
-    max-height: 80px;
-    overflow: hidden;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    transition: all .5s ease;
-  }
   nav .logo {
     margin-bottom: 32px;
   }
