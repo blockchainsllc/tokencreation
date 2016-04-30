@@ -304,9 +304,13 @@
                                 <div ng-show="account.btc" style="padding-top:10px;margin-top:10px;border-top-style:solid;border-top-color:gray">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <span style="color:red; font-size: 14px;">This method requires 3 confirmations on the Bitcoin network to complete, it could take more than one hour to complete your purchase.<br/>
+                                            <span style="color:red; font-size: 14px;">This method requires 3 confirmations on the Bitcoin network to complete, it could take more than one hour to complete your purchase.</span><br/>
 
-                                            Please send {{account.btc.amount}} BTC to this address: <b><pre>{{account.btc.adr}}</pre></b><br/><br/> Or simply scan this QRCode with your Bitcoin wallet app.
+                                            Please send {{account.btc.amount}} BTC to this address: <b><pre>{{account.btc.adr}}</pre></b><br/> Or simply scan this QRCode with your Bitcoin wallet app.<br/>
+                                            if you have any questions or problems, you may send an email to <a href="mailto:Support@gatecoin.com">Support@gatecoin.com</a>!
+                                            
+                                            
+                                            
                                             <div style="margin-top:20px" id="btc_qrcode" />
                                         </div>
                                         <div class="col-md-6">
@@ -334,7 +338,6 @@
                                     <div ng-show="account.btc.status && account.btc.status=='Paid'">
                                         <b>You have successfully created {{(( account.btc_amount ||0) / btceth )/tokenPrice*tokenUnits | number:2}} DAO tokens.</b>
                                          <br/><br/>You will be able to confirm your balance on the <a href="./creation.html" target="_new">Creation page</a>. <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can now safely close this page.<br>All support requests should be made in the support category of our <a href="https://forum.daohub.org/c/theDAO/support" target="_new">forum</a>.
-                                        
                                     </div>
                                     <div ng-show="account.btc.status && account.btc.status=='Underpaid'">
                                         <b color="red">Some BTC was received, but it was not sufficient. Please send more BTC to reach the correct amount.</b>
