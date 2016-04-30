@@ -207,7 +207,7 @@
                                     
                                     <div ng-show="account.existing=='yes_wallet'">
                                         In order to send Ether from your new wallet to the DAO, you must first transfer enough ETH to your new account. Once you have done this, you can either install the  <a href="{{mist_link}}" target="_blank">Ethereum Wallet</a> 
-                                        or simply go to <a href="https://www.myetherwallet.com/#send-transaction" target="_new">MyEtherWallet</a> and use your downloaded key to send the transaction.<br/><br/> 
+                                        or simply go to <a href="https://www.myetherwallet.com/#the-dao" target="_new">MyEtherWallet</a> and use your downloaded key to send the transaction.<br/><br/> 
                                     </div>
                                     
                                     Your DAO tokens will be created instantly. <br/> <br/> Send the amount of ETH you want to use to create DAO tokens to the following DAO contract address: <br/><br/>
@@ -256,7 +256,7 @@
                             <div class="col-md-8 tokencalculator" ng-show="plannedEth_show">
                                 <md-input-container class="col-md-4">
                                     <label>ETH</label>
-                                    <input type="number" step="any" min="0" max="1000000" name="plannedETH" id="account_plannedETH" ng-model="account.plannedETH" />
+                                    <input type="number" step="any" min="0"  name="plannedETH" id="account_plannedETH" ng-model="account.plannedETH" />
                                 </md-input-container>
                                 
                                 <div style="padding-top:30px"> 
