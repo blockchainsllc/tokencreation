@@ -292,7 +292,7 @@
                                             <div ng-message="max"> Please enter a realistic number of BTC!</div>
                                         </div>
                                     </md-input-container>
-                                    <div class="col-md-4" style="padding-top:40px"> ( 1 ETH = aprox. {{btceth}} BTC ) <br> &nbsp; = {{(( account.btc_amount ||0) / btceth )/tokenPrice*tokenUnits | number:2}} DAO tokens</div>
+                                    <div class="col-md-4" style="padding-top:40px"> ( 1 ETH = approx. {{btceth}} BTC ) <br> &nbsp; = approx {{(( account.btc_amount ||0) / btceth )/tokenPrice*tokenUnits | number:2}} DAO tokens</div>
                                     <div class="col-md-4">
                                         <md-button class="md-raised md-primary" ng-disabled="!account.btc_amount || account.isSendingEther">create QRCode {{ account.success ? 'again' : ''}}</md-button>
                                     </div>
@@ -304,7 +304,7 @@
                                 <div ng-show="account.btc" style="padding-top:10px;margin-top:10px;border-top-style:solid;border-top-color:gray">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <span style="color:red; font-size: 14px;">This method requires 3 confirmations on the Bitcoin network to complete, and it can take up to 1 hour for a transaction to receive 1 confirmeation.<br/>
+                                            <span style="color:red; font-size: 14px;">This method requires 3 confirmations on the Bitcoin network to complete, it could take more than one hour to complete your purchase.<br/>
 
                                             Please send {{account.btc.amount}} BTC to this address: <b><pre>{{account.btc.adr}}</pre></b><br/><br/> Or simply scan this QRCode with your Bitcoin wallet app.
                                             <div style="margin-top:20px" id="btc_qrcode" />
@@ -320,7 +320,7 @@
                                                 <div ng-show="account.btc.tx.amountReceived">
                                                     Received : {{account.btc.tx.amountReceived}} BTC<br/> Confirmed: {{account.btc.tx.confirmation}} <br/>
                                                 </div>
-                                                <div ng-show="account.btc.tx.expires">
+                                                <div ng-show="account.btc.tx.expires && account.btc.status=='New'">
                                                     Expires &nbsp;: {{account.btc.tx.expires}}
                                                 </div>
                                             </div>
@@ -355,9 +355,9 @@
                     <!-- Pay in BTC -->
                     <div ng-show="account.currencyType=='COINS' && account.adr">
                         <p style="font-size: 14px;">
-                            Thanks to ShapeShift.io, you can create DAO tokens with almost any digital currency.<br/> You will also benefit from higher limits using this tool than using ShapeShift directly.<br/> Once you click the button below, a ShapeShift window will open, where you will be able to conduct the transaction.  We recommend you leave the "Amount ETH" box EMPTY as it often causes complications.<br/><br/>
+                            Thanks to ShapeShift.io, you can create DAO tokens with almost any digital currency.<br/> You will also benefit from higher limits using this tool than using ShapeShift directly.<br/> Once you click the button below, a ShapeShift window will open, where you will be able to conduct the transaction. If you are sending under 2 BTC worth of digital currency, we recommend you leave the "Amount ETH" box EMPTY as it often causes complications; to send more than 2 BTC you will need to enter a value.<br/><br/>
                             <md-button ng-click="openShapeShift()"><img src="https://shapeshift.io/images/shifty/small_light_altcoins.png" class="ss-button"></md-button><br/><br/>
-                            <span style="color:red; font-size: 14px;">Note that it can take up to 1 hour for a bitcoin block to be mined and the transaction to be confirmed.<br/>Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as ShapeShift will be sending ETH directly to the DAO contract on your behalf. <br/><br/> After ShapeShift transfers the funds to the DAO, you will be able to confirm your <a href="./creation.html">balance</a> for account {{account.adr}}</a> . <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page once your ShapeShift transfer is complete.<br/>
+                            <span style="color:red; font-size: 14px;">On a single confirmation is needed, but note that it can take up to 1 hour for the transaction to be confirmed.<br/>Note that this page will not update and you will not be notified of the transfer. </span><br/> This is expected as ShapeShift will be sending ETH directly to the DAO contract on your behalf. <br/><br/> After ShapeShift transfers the funds to the DAO, you will be able to confirm your <a href="./creation.html">balance</a> for account {{account.adr}}</a> . <br/> <a href="voting.html" target="_new">Voting</a> on proposals will become possible at the end of the Creation phase. <br/><br/> You can safely close this page once your ShapeShift transfer is complete.<br/>
                             <div>
                             </div>
                         </p>
