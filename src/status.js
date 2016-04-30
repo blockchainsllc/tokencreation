@@ -72,14 +72,14 @@ function initBalanceCheck() {
       if (adr==lastCheckedValue && !event.type) return;
       lastCheckedValue=adr;
       var stats = window.daoStats || { units:100};
-      sendRequest("eth_getBalance",['0x'+normalizeAdr(adr),'latest'],function(balance) {
+//      sendRequest("eth_getBalance",['0x'+normalizeAdr(adr),'latest'],function(balance) {
          sendRequest("eth_call",[{ to : window.daoStats.dao,  data : '0x70a08231'+ normalizeAdr(adr,64)},'latest'],function(tokens) {
             var web3 = new Web3();
             $("#dao_account_tokens").html(""+round((web3.fromWei(tokens,'ether') || 0)*100));
             //$("#dao_account_balance").html(""+(round(web3.fromWei(balance,'ether')) || 0));
             $("#dao_account_result").show();
          });
-      });
+//      });
    }
  
     
