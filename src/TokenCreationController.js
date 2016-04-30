@@ -210,9 +210,13 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
             var $qrDepAddr=$("#"+id);
             $qrDepAddr.empty();
             $qrDepAddr.qrcode({width: 175, height: 175, text: 'bitcoin:' + $scope.account.btc.adr + '?amount=' + $scope.account.btc.amount});
-            
+           
+            var maxcheck = 120*3; // max 2h 3x per minute
+            var checkcount = 0;
             // start watching ...
             function checkTx() {
+                checkcount++;
+                if (checkcount>=maxcheck) return;
                 $http.post(stats.server+"gatecoin.php",result.data,{}).then(function(checkRes){
                    if (checkRes.data && checkRes.data.payment) {
                       var p      = checkRes.data.payment;
@@ -223,11 +227,12 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
                       $scope.account.btc.status=status;
                       
                       if (status=='New' || status=='Unconfirmed') 
-                         $timeout(checkTx, 10000);
+                         $timeout(checkTx, 20000);
                    }
                 });
             }
-            
+
+ 
             checkTx();
          }
       }, function(error){
