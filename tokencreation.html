@@ -292,7 +292,7 @@
                                             <div ng-message="max"> Please enter a realistic number of BTC!</div>
                                         </div>
                                     </md-input-container>
-                                    <div class="col-md-4" style="padding-top:40px"> ( 1 ETH = aprox. {{btceth}} BTC ) <br> &nbsp; = {{(( account.btc_amount ||0) / btceth )/tokenPrice*tokenUnits | number:2}} DAO tokens</div>
+                                    <div class="col-md-4" style="padding-top:40px"> ( 1 ETH = approx. {{btceth}} BTC ) <br> &nbsp; = approx {{(( account.btc_amount ||0) / btceth )/tokenPrice*tokenUnits | number:2}} DAO tokens</div>
                                     <div class="col-md-4">
                                         <md-button class="md-raised md-primary" ng-disabled="!account.btc_amount || account.isSendingEther">create QRCode {{ account.success ? 'again' : ''}}</md-button>
                                     </div>
