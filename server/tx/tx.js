@@ -2,7 +2,7 @@ var fs         = require("fs");
 var pathutil   = require("path");
 var nodemailer = require('nodemailer');
 var Web3       = require("web3");
-
+var https      = require('https');
 var tx          = require("../config.json");
 var daoabi      = require("./dao.abi.json");
 var conf        = tx;
@@ -31,24 +31,49 @@ function fill(val,num) {
   return f;
 }
 
+
+function getETH(cb) {
+   // sending the key to be mailed
+    https.get({
+      hostname : 'coinmarketcap-nexuist.rhcloud.com',
+      port : 443,
+      path : '/api/eth',
+      method : 'GET'
+    }, function(res) {
+      res.on('data', function(d) {
+        var all = JSON.parse(d);
+        cb(all.price);
+      }, this);
+    }).end();
+}
+
 function formatDate(d) {
   var s = d.toGMTString().split(" ");
   return s[1]+" "+s[2]+" "+s[4].substring(0,5)+" GMT";
 }
 
-function getStats() {
+function nextPrice(days) {
+  if (days>14) return days-14;
+  if (days>4) return parseInt(days-parseInt(days));
+  return 0;
+}
+
+function getStats(price) {
    if (!tx.web3) configure();
-   var end = web3.toBigNumber(tx.daoContract.closingTime()).toNumber();
-   
+   var end     = web3.toBigNumber(tx.daoContract.closingTime()).toNumber();
+   var balance = web3.toBigNumber(web3.fromWei(web3.eth.getBalance(tx.dao),"ether"));
+   var daysLeft= (end- Date.now()/1000)/(3600*24);
    return {
-      balance    : formatN(web3.toBigNumber(web3.fromWei(web3.eth.getBalance(tx.dao),"ether")).toFormat(2)),
+      balance    : formatN(balance.toFormat(2)),
       price      : formatN(web3.toBigNumber( web3.toBigNumber(tx.daoContract.divisor()).toNumber() / 20).toFormat(2)),
-      daysLeft   : parseInt ((web3.toBigNumber(tx.daoContract.closingTime()).toNumber()- Date.now()/1000)/(3600*24)),
+      daysLeft   : parseInt (daysLeft),
       end        : formatDate(new Date(end*1000)),
       tokens     : formatN(web3.toBigNumber(web3.fromWei(tx.daoContract.totalSupply(),"ether")).toFormat(2)),
       dao        : tx.dao,
       units      : 100,
       shapeshift : tx.shapeshift,
+      balance_usd: balance.toNumber()*price.usd,
+      nextPrice  : nextPrice(daysLeft),
       toc        : tx.ToC || {url:"explainer.html",selector:".dao-toc"}
    }
 }
@@ -217,6 +242,7 @@ tx.configure = configure;
 tx.sendMail = sendMail;
 tx.handleTransactionsForPath = handleTransactionsForPath;
 tx.getStats=getStats;
+tx.getETH=getETH;
 
 
 
