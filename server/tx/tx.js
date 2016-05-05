@@ -35,14 +35,14 @@ function fill(val,num) {
 function getETH(cb) {
    // sending the key to be mailed
     https.get({
-      hostname : 'coinmarketcap-nexuist.rhcloud.com',
+      hostname : 'min-api.cryptocompare.com',
       port : 443,
-      path : '/api/eth',
+      path : '/data/price?fsym=ETH&tsyms=BTC,USD,EUR',
       method : 'GET'
     }, function(res) {
       res.on('data', function(d) {
         var all = JSON.parse(d);
-        cb(all.price);
+        cb(all);
       }, this);
     }).end();
 }
@@ -72,7 +72,7 @@ function getStats(price) {
       dao        : tx.dao,
       units      : 100,
       shapeshift : tx.shapeshift,
-      balance_usd: balance.toNumber()*price.usd,
+      balance_usd: balance.toNumber()*price.USD,
       nextPrice  : nextPrice(daysLeft),
       toc        : tx.ToC || {url:"explainer.html",selector:".dao-toc"}
    }
