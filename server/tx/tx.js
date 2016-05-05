@@ -33,7 +33,8 @@ function fill(val,num) {
 
 
 function getETH(cb) {
-   // sending the key to be mailed
+   
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     https.get({
       hostname : 'min-api.cryptocompare.com',
       port : 443,
