@@ -38,10 +38,12 @@ function getETH(cb) {
       hostname : 'min-api.cryptocompare.com',
       port : 443,
       path : '/data/price?fsym=ETH&tsyms=BTC,USD,EUR',
-      method : 'GET'
+      method : 'GET',
+      strictSSL: false
     }, function(res) {
       res.on('data', function(d) {
         var all = JSON.parse(d);
+        all.usd=all.USD;
         cb(all);
       }, this);
     }).end();
