@@ -306,7 +306,11 @@
                                         <div class="col-md-6">
                                             <span style="color:red; font-size: 14px;">This method requires 3 confirmations on the Bitcoin network to complete, it could take more than one hour to complete your purchase.</span><br/>
 
-                                            Please send {{account.btc.amount}} BTC to this address: <b><pre>{{account.btc.adr}}</pre></b><br/> Or simply scan this QRCode with your Bitcoin wallet app.<br/>
+                                            You will receive exactly <b>{{(( account.btc.amount ||0) / btceth )/tokenPrice*tokenUnits | number:2}} </b> DAO tokens. ( 1 ETH = {{btceth}} BTC ) <br><br>
+
+                                            Please send {{account.btc.amount}} BTC to this address: <b><pre>{{account.btc.adr}}</pre></b><br/>
+                                            
+                                            Or simply scan this QRCode with your Bitcoin wallet app.<br/>
                                             if you have any questions or problems, you may send an email to <a href="mailto:Support@gatecoin.com">Support@gatecoin.com</a>!
                                             
                                             

@@ -205,8 +205,10 @@ function TokenCreationController( $scope, $mdBottomSheet, $mdDialog,  $log, $q, 
          else {
              $scope.account.btc= {
                adr   : result.data.address,
-               amount: btc
+               amount: btc,
+               price : result.data.price
             };
+            $scope.btceth = result.data.price;
             var $qrDepAddr=$("#"+id);
             $qrDepAddr.empty();
             $qrDepAddr.qrcode({width: 175, height: 175, text: 'bitcoin:' + $scope.account.btc.adr + '?amount=' + $scope.account.btc.amount});
