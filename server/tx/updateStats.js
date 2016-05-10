@@ -21,8 +21,10 @@ tx.getETH(function(price) {
             '  window.daoStats.nextPrice-=1/(24*60);\n'+
             '  window.daoStats.daysLeft-=1/(24*60);\n'+
             '  if (window.daoStats.nextPrice<0) window.daoStats.nextPrice=window.daoStats.daysLeft>4?1:0;\n'+
-            '  if (window.daoStats.daysLeft<0) $("#crowdsaleApp").hide(); \n'+
-            '  setTimeout(updateDAOStats,1000*60);\n'+
+            '  if (window.daoStats.daysLeft<0) \n'+
+            '     $("#crowdsaleApp").html("Thank you! The Creation Phases is over now."); \n'+
+            '  else \n'+
+            '    setTimeout(updateDAOStats,1000*60);\n'+
             '}\n'+
             'updateDAOStats();\n';
 
