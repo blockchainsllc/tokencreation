@@ -6,10 +6,10 @@ tx.getETH(function(price) {
    var code = 'window.daoStats='+JSON.stringify(stats)+"\n" +
             'function updateDAOStats() {\n'+
             '  $(".dao-stat-adr").html(window.daoStats.dao);\n'+
-            '  $(".dao-stat-token-sold").html(window.daoStats.tokens * window.daoStats.units);\n'+
-            '  $(".dao-stat-days-left").html(window.daoStats.daysLeft);\n'+
-            '  $(".dao-stat-token-price").html(window.daoStats.price+" ETH");\n'+
-            '  $(".dao-stat-total-eth").html(window.daoStats.balance+" ETH");\n'+
+//            '  $(".dao-stat-token-sold").html(window.daoStats.tokens * window.daoStats.units);\n'+
+//            '  $(".dao-stat-days-left").html(window.daoStats.daysLeft);\n'+
+//            '  $(".dao-stat-token-price").html(window.daoStats.price+" ETH");\n'+
+//            '  $(".dao-stat-total-eth").html(window.daoStats.balance+" ETH");\n'+
             
             '  $(".dao-stat-end").html(window.daoStats.end);\n'+
             '  $(".dao-stat-token-sold-data").attr("data-perc",formatStats(window.daoStats.tokens * window.daoStats.units,"M"));\n'+
