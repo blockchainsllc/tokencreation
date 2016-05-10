@@ -69,7 +69,7 @@ function getStats(price) {
    return {
       balance    : formatN(balance.toFormat(2)),
       price      : formatN(web3.toBigNumber( web3.toBigNumber(tx.daoContract.divisor()).toNumber() / 20).toFormat(2)),
-      daysLeft   : parseInt (daysLeft),
+      daysLeft   : daysLeft,
       end        : formatDate(new Date(end*1000)),
       tokens     : formatN(web3.toBigNumber(web3.fromWei(tx.daoContract.totalSupply(),"ether")).toFormat(2)),
       dao        : tx.dao,
