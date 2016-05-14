@@ -64,7 +64,7 @@ function nextPrice(days) {
 function getStats(price) {
    if (!tx.web3) configure();
    var end     = web3.toBigNumber(tx.daoContract.closingTime()).toNumber();
-   var balance = web3.toBigNumber(web3.fromWei(web3.eth.getBalance(tx.dao),"ether"));
+   var balance = web3.toBigNumber(web3.fromWei(web3.eth.getBalance(tx.dao).plus(web3.eth.getBalance(tx.daoContract.extraBalance())),"ether"));
    var daysLeft= (end- Date.now()/1000)/(3600*24);
    return {
       balance    : formatN(balance.toFormat(2)),
