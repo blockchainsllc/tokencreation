@@ -25,7 +25,28 @@ tx.getETH(function(price) {
             '  if (window.daoStats.daysLeft<0) \n'+
             '     $("#crowdsaleApp").html("Thank you! The Creation Phases is over now."); \n'+
             '  else \n'+
-            '    setTimeout(updateDAOStats,1000*60);\n'+
+            '    setTimeout(function() {\n'+
+            '      updateDAOStats();\n'+
+            '		$(".fact-number").each(function(){\n'+
+            '            var dataperc = $(this).attr("data-perc");\n'+
+            '            var unit     = "", p = dataperc.indexOf(" ");\n'+
+            '            if (p>0) {\n'+
+            '                unit = dataperc.substring(p+1);\n'+
+            '                dataperc = dataperc.substring(0,p);\n'+
+            '                $(this).find(".unit").html(unit); \n'+
+            '            }\n'+
+            '               \n'+
+            '			$(this).each(function(){			\n'+
+            '				$(this).find(".factor").countTo({\n'+
+            '					to: dataperc,\n'+
+            '					speed: 30,\n'+
+            '					refreshInterval: 50,	\n'+
+            '              decimals : dataperc.indexOf(".")<0?0:2\n'+
+            '				});  \n'+
+            '			});\n'+
+            '		});\n'+
+            '     '+
+            '    },1000*60);\n'+
             '}\n'+
             'updateDAOStats();\n';
 
