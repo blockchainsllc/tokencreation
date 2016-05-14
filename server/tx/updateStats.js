@@ -38,6 +38,7 @@ tx.getETH(function(price) {
             '               \n'+
             '			$(this).each(function(){			\n'+
             '				$(this).find(".factor").countTo({\n'+
+            '					from: dataperc,\n'+
             '					to: dataperc,\n'+
             '					speed: 30,\n'+
             '					refreshInterval: 50,	\n'+
