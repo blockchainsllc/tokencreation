@@ -56,7 +56,7 @@ function formatDate(d) {
 }
 
 function nextPrice(days) {
-  if (days>14) return days-14;
+  if (days>13) return days-13;
   if (days>4) return days%1;
   return 0;
 }
